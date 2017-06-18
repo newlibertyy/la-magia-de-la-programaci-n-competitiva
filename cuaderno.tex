@@ -1,0 +1,355 @@
+\documentclass[11pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{enumerate}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+ 
+\usepackage{listings}
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+ 
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+ 
+\lstdefinestyle{consola}
+   {basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray75},
+   }
+ 
+\lstdefinestyle{C}
+   {language=C++,}
+ 
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Comunidad new liberty}
+\title{La magia de la programación competitiva}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de figuras} 
+\listoffigures
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de tablas}
+\listoftables
+\cleardoublepage
+\chapter{matemáticas}
+\section{sucesiones y series}
+\subsection{sucesión aritmética}
+las sucesiones aritméticas son aquellas que restando un elemento con su antecesor siempre da una constante se representan de la siguiente manera.
+\\$ an+b$
+\\donde a es la resta entre dos elementos consecutivos y b es el primer elemento
+
+\subsection{sucesión geométrica}
+las sucesiones geométricas son aquellas que el cociente de un elemento con su antecesor siempre da una constante se representan de la siguiente manera.
+\\$ ar^{n-1}$
+\\donde a es el primer termino y r es el cociente entre un numero y su anterior
+
+\subsection{serie aritmética}
+una serie aritmética es una sucesión creada con la suma de los términos de una sucesión aritmética, su formula es:
+\\$a\frac{n(n+1)}{2}+nb$ 
+
+\subsection{serie geométrica}
+una serie geométrica es una sucesión creada con la suma del los términos de una sucesión geométrica, su formula es:
+\\$a\frac{1-r^{n}}{1-r}$
+\subsection{transformaciones lineales o aplicaciones lineales}
+una transformación lineal es una función que satisface los siguientes axiomas
+\begin{itemize}
+\item $f(x+y)=f(x)+f(y)$ 
+\item $f(ax)=af(x)$ siendo a una constante
+\end{itemize} 
+
+\subsection{sumatorios}
+los sumatorios son la suma de elementos de una secuencia, estas son las propiedades:
+\begin{itemize}
+\item la cantidad de elementos de un sumatorio es el limite superior menos el limite inferior mas la unidad 
+\item el sumatorio de una constante es la cantidad de elementos por la constante
+\item el sumatorio es una transformación lineal o aplicación lineal y cumple con todas sus propiedades
+\end{itemize}
+
+\section{máximo común divisor y minino común múltiplo}
+\subsection{máximo común divisor}
+el máximo común divisor se cal calcula con el algoritmo de Euclides
+si $b=0$  $gcd(a,b)=a$\\
+de lo contrario $ gcd(a,b)=gcd(b,r)$ donde $r=a \mod{b}$\\
+c++ ya tiene implementada esta función en su  algorithm como \_\_gcd 
+
+\subsection{mínimo común múltiplo}
+$lcd(a,b)=\frac{ab}{gcd(a,b)}$
+
+
+\section{aritmética modular}
+\subsection{conjunto $z_{n}$}
+el conjunto $z_{n}$ es el conjunto de elementos $[0 , 1, 2, . . . n-1]$
+\subsection{propiedades de la aritmética modular}
+\begin{itemize}
+\item si $a\equiv b \mod{n}$ entonces $a+c\equiv b+c \mod{n}$
+\item si $a\equiv b \mod{n}$ entonces $(a-b) | m$
+\item $a+b \mod{n} = (a\mod{n}+b\mod{n}) \mod{n}$
+\item $ab \mod{n} = ((a\mod{n}) (b\mod{n})) \mod{n}$
+\item si $a\equiv b \mod{n}$ entonces $ac\equiv bc \mod{n}$
+\end{itemize}
+\subsection{inverso multiplicativo en $z_{n}$}
+el inverso multiplicativo de un numero $a$ en la aritmética modular en el conjunto $z_{n}$ es encontrar un numero 
+x que satisfaga $ax \equiv 1 \mod{n}$ para ello se usa el algoritmo de Euclides extendido que presentamos después.\\
+para que $a$ sea invertible $a$ y $n$ tienen que ser coprimos, a continuación se muestra el algoritmo para hallar el inverso
+\begin{lstlisting}[style=C]
+long inverse_Zn(int a,int n){
+  extendedEuclid(a,n);   
+  if(d!=1){
+  	return -1;
+  }
+  else{
+  	if(x<0){
+  		x+=n;
+   		return x;
+  	}
+  }  
+}
+\end{lstlisting}
+\subsection{teorema chino del resto}
+\subsection{algoritmo de Euclides extendido}
+el algoritmo de Euclides extendido sirve para hallar 2 números t y s que dados a y b\\
+$at+bs=gcd(a,b)$
+\begin{lstlisting}[style=C]
+// store x, y, and d as global variables
+void extendedEuclid(int a, int b) {
+	if (b == 0) { x = 1; y = 0; d = a; return; }
+	// base case
+	extendedEuclid(b, a % b);
+	// similar as the original gcd
+	int x1 = y;
+	int y1 = x - (a / b) * y;
+	x = x1;
+	y = y1;
+}
+\end{lstlisting}
+\subsection{ecuaciones diofanticas lineales de 2 variables }
+estas ecuaciones son de la forma $ax+by=c$ donde a, b y c son números enteros y el problema se encuentra en calcular
+2 enteros x e y que satisfagan la ecuación, la ecuación tiene múltiples soluciones y sirven comúnmente para solucionar congruencias como $ax+b\equiv cx+d \mod{m}$ siendo a,b,c,d números conocidos utilizando las propiedades de la aritmética modular tenemos\\  
+$(ax+b)-(cx+d)=ym$\\
+$(a-c)x+(b-d)=ym$\\
+$(c-a)x+ym=(b-d)$\\
+para solucionar la ecuación de la forma $ax+by=c$  tenemos que garantizar que $gcd(a,b)|c$
+si no se cumple esta condición la ecuación no tendrá soluciones enteras
+si  se cumple utilizamos el algoritmo de Euclides  y hallamos s y t $at+bs=gcd(a,b)$
+multiplicamos por c a ambos lados y dividimos por $gcd(a,b)$ y así hallamos nuestra primera solución 
+donde $x_{0}=\frac{tc}{gcd(a,b)}$ y $y_{0}=\frac{st}{gcd(a,b)}$ \\
+las siguientes soluciones son de la forma $x = x_{0} + \frac{b}{d}n$ y $y = y_{0} - \frac{a}{d}n$
+\section{números primos}
+\subsection{criba de Eratóstenes}
+este es un algoritmo para determinar los primos que hay hasta un número dado
+\begin{lstlisting}[style=C] 
+#include <bitset> // compact STL for Sieve, better than vector<bool>!
+ll _sieve_size; // ll is defined as: typedef long long ll;
+bitset<10000010> bs; // 10^7 should be enough for most cases
+vi primes;// compact list of primes in form of vector<int>
+void sieve(ll upperbound) { // create list of primes in [0..upperbound]
+	_sieve_size = upperbound + 1; // add 1 to include upperbound
+	bs.set(); // set all bits to 1
+	bs[0] = bs[1] = 0; // except index 0 and 1
+	for (ll i = 2; i <= _sieve_size; i++) 
+	if (bs[i]) { // cross out multiples of i starting from i * i!
+		for (ll j = i * i; j <= _sieve_size; j += i) bs[j] = 0;
+		primes.push_back((int)i);// add this prime to the list of primes
+	} 
+}
+\end{lstlisting}
+\section{permutaciones y combinaciones}
+\subsection{principio multiplicativo}
+si se quiere realizar un procedimiento de n pasos donde el primer paso puede ser hecho de $a_{1}$, el segundo paso
+de $a_{2}$ y así sucesivamente hasta $a_{n}$ las formas de llevar a cabo el procedimiento son $a_{1}*a_{2} ... *a_{n}$ 
+\subsection{numero de permutaciones de n elementos}
+el numero de permutaciones es el numero de arreglos donde el orden importa, el numero de permutaciones
+se calcula como $P(n,n)=n!$
+\subsection{numero de permutaciones de n elementos tomados de a m}
+el numero de permutaciones de n elementos tomados de a m son
+$P(n,m)=\frac{n!}{\left (n-m  \right )!}$
+\subsection{número de permutaciones de n elementos tomados de a m con repetición}
+en este problema tenemos un suministro ilimitado de los n elementos diferentes y queremos saber de cuantas maneras podemos coger m elementos. su formula es:
+$Pr(n,m)=n^{m}$ 
+\subsection{número de combinaciones de n elementos tomados de a m}
+el numero de combinaciones de n elementos cogidos de m son el numero de formas que podemos coger m elementos de los n sin importar su orden\\
+\subsubsection{formas de calcular los números combinados o coeficientes binomiales}
+formula:\\
+$c(n,m)=\frac{n!}{m!(n-m)!}$\\
+\\
+formula recursiva:\\
+casos bases $c(n,n)=c(n,0)=1$\\
+de mas casos $c(n,m)=c(n-1,k)+c(n-1,k-1)$
+
+\subsection{número de desarreglos}
+el numero de desarreglos es el numero de permutaciones que podemos hacer donde ninguno de los elementos esta en su posición inicial, se calculan con la siguiente formula recursiva.\\
+$D_{n}=(n-1)(D_{n-1}+D_{n-2})$\\
+casos base:
+$D_{2}=1$ $D_{3}=2$
+\subsection{número de permutaciones de n elementos que dejan exactamente k elementos fijos}
+el numero de permutaciones que dejan exactamente k elementos fijos es lo mismo que tachar k elementos y hacer un desarreglo con los n-k restantes. entonces la formula seria el numero de formas que podemos escoger k elementos del total multiplicado el desarreglo de n-k, siendo $s(n,k)$ el numero de arreglos con exactamente k elementos fijos tenemos:\\
+$s(n,k)=c(n,k)D_{n-k}$
+
+\subsection{número de permutaciones con al menos un elemento fijo}
+el número de permutaciones que tienen al menos un elemento fijo son todas las permutaciones que no son desarreglos\\
+$n!-D_{n}$
+\subsection{numero de permutaciones donde el primer elemento se repite a veces el segundo b veces ...}
+el número de permutaciones es:
+$\frac{n!}{a!b!...}$
+\section{probabilidad}
+\subsection{regla de Laplace}
+la regla de laplace establece que la probabilidad de que ocurra un evento es la cantidad de casos favorables sobre la cantidad de casos posibles\\
+$p(x)=\frac{casos\_favorables}{casos\_posibles}$
+\subsection{probabilidad de unión de sucesos}
+si tenemos dos sucesos $a$ y $b$ la probabilidad de que suceda $a$ ó $b$ es:
+$p(a\cup b)=p(a)+p(b)-p(a\cap b)$
+\subsection{probabilidad de intersección de sucesos}
+si tenemos dos sucesos $a$ y $b$ la probabilidad de que suceda $a$ y $b$ es:
+$p(a\cap b)=p(a)P(b|a)$\\
+\subsection{probabilidad condicionada}
+la probabilidad condicionada es la probabilidad de que ocurra un evento $a$ sabiendo que ya ocurrió un evento $b$ y se calcula de la siguiente manera $p(a|b)=\frac{p(a\cap b)}{p(b)}$
+\subsection{teorema de Bayes}
+el teorema de Bayes indica una relación entre $p(a|b)$ y $p(b|a)$ y puede ser sacado de las formulas anteriores que hemos visto $p(a|b)=\frac{p(a)P(b|a)}{p(b)}$
+\chapter{geometría computacional}
+\section{formulas de geometría}
+\begin{itemize}
+\item $\frac{a}{sin(A)}=\frac{b}{sin(B)}=\frac{c}{sin(C)}$ 
+\end{itemize}
+\section{estructuras geométricas}
+\subsection{puntos}
+\subsubsection{punto de enteros}
+\begin{lstlisting}[style=C]
+// struct point_i { int x, y; };
+// basic raw form, minimalist mode
+struct point_i { int x, y;
+// whenever possible, work with point_i
+point_i() { x = y = 0; }
+// default constructor
+point_i(int _x, int _y) : x(_x), y(_y) {} };
+// user-defined
+\end{lstlisting}
+\subsubsection{punto de reales}
+\begin{lstlisting}[style=C]
+struct point { double x, y;
+// only used if more precision is needed
+point() { x = y = 0.0; }
+// default constructor
+point(double _x, double _y) : x(_x), y(_y) {} };
+// user-defined
+\end{lstlisting}
+\subsubsection{ordenamiento de puntos}
+\begin{lstlisting}[style=C]
+struct point { double x, y;
+point() { x = y = 0.0; }
+point(double _x, double _y) : x(_x), y(_y) {}
+bool operator < (point other) const { // override less than operator
+if (fabs(x - other.x) > EPS)
+// useful for sorting
+	return x < other.x;
+// first criteria , by x-coordinate
+return y < other.y; } };
+// second criteria, by y-coordinate
+// in int main(), assuming we already have a populated vector<point> P
+sort(P.begin(), P.end());
+// comparison operator is defined above
+\end{lstlisting}
+\subsubsection{saber si dos puntos son iguales}
+\begin{lstlisting}[style=C]
+struct point { double x, y;
+point() { x = y = 0.0; }
+point(double _x, double _y) : x(_x), y(_y) {}
+// use EPS (1e-9) when testing equality of two floating points
+bool operator == (point other) const {
+return (fabs(x - other.x) < EPS && (fabs(y - other.y) < EPS)); } };
+\end{lstlisting}
+\subsubsection{distancia euclídea entre 2 puntos}
+\begin{lstlisting}[style=C]
+double dist(point p1, point p2) {
+// Euclidean distance
+// hypot(dx, dy) returns sqrt(dx * dx + dy * dy)
+return hypot(p1.x - p2.x, p1.y - p2.y); }
+// return double
+\end{lstlisting}
+\subsubsection{rotar un punto con respecto al origen}
+\begin{lstlisting}[style=C]
+// rotate p by theta degrees CCW w.r.t origin (0, 0)
+point rotate(point p, double theta) {
+double rad = DEG_to_RAD(theta);
+// multiply theta with PI / 180.0
+return point(p.x * cos(rad) - p.y * sin(rad),
+p.x * sin(rad) + p.y * cos(rad)); }
+\end{lstlisting}
+\subsection{lineas}
+\begin{lstlisting}[style=C]
+struct line { double a, b, c; };
+// a way to represent a line
+\end{lstlisting}
+\subsubsection{hallar una recta con 2 puntos}
+\begin{lstlisting}[style=C]
+// the answer is stored in the third parameter (pass by reference)
+void pointsToLine(point p1, point p2, line &l) {
+if (fabs(p1.x - p2.x) < EPS) {
+// vertical line is fine
+l.a = 1.0;
+l.b = 0.0;
+l.c = -p1.x;
+// default values
+} else {
+l.a = -(double)(p1.y - p2.y) / (p1.x - p2.x);
+l.b = 1.0;
+// IMPORTANT: we fix the value of b to 1.0
+l.c = -(double)(l.a * p1.x) - p1.y;
+} }
+\end{lstlisting}
+\subsubsection{saber si dos lineas son paralelas}
+\begin{lstlisting}[style=C]
+bool areParallel(line l1, line l2) {
+// check coefficients a & b
+return (fabs(l1.a-l2.a) < EPS) && (fabs(l1.b-l2.b) < EPS); }
+\end{lstlisting}
+\subsubsection{saber si 2 lineas son iguales}
+\begin{lstlisting}[style=C]
+bool areSame(line l1, line l2) {
+// also check coefficient c
+return areParallel(l1 ,l2) && (fabs(l1.c - l2.c) < EPS); }
+\end{lstlisting}
+\subsubsection{intersección entre 2 lineas}
+\subsection{vectores}
+\subsection{círculos}
+\subsubsection{ángulos en una circunferencia}
+\subsection{triángulos}
+\subsection{vectores}
+\section{representación de un polígono}
+\section{perímetro de un polígono}
+\section{area de un polígono}
+\section{comprobar si un punto esta dentro de un polígono}
+\section{comprobar que un polígono es convexo}
+\section{cortar un polígono con una linea recta}
+\section{cubierta convexa}
+\end{document}

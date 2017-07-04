@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2017.6.8)  4 JUL 2017 09:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2017.6.8)  4 JUL 2017 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -701,8 +701,13 @@ Cap\'{\i }tulo 1.
 (./capitulo-002-matematicas/sucesiones-y-series/sucesion-aritmetica.tex)
 (./capitulo-002-matematicas/sucesiones-y-series/sucesion-geometrica.tex)
 (./capitulo-002-matematicas/sucesiones-y-series/serie-aritmetica.tex)
-(./capitulo-002-matematicas/sucesiones-y-series/serie-geometrica.tex)))
-(./capitulo-004-geometricos/geometricos.tex [9
+(./capitulo-002-matematicas/sucesiones-y-series/serie-geometrica.tex))
+(./capitulo-002-matematicas/teoria-de-numeros/teoria-de-numeros.tex)
+(./capitulo-002-matematicas/combinatoria/combinatoria.tex)
+(./capitulo-002-matematicas/sumatorios/sumatorios.tex)
+(./capitulo-002-matematicas/exponenciacion-rapida/exponenciacion-rapida.tex)
+(./capitulo-002-matematicas/transformaciones-lineales/transformaciones-lineales
+.tex)) (./capitulo-004-geometricos/geometricos.tex [9
 
 ]
 LaTeX Info: Redefining \. on input line 1.
@@ -734,8 +739,8 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5951 strings out of 493013
- 77208 string characters out of 6139318
+ 5971 strings out of 493013
+ 78158 string characters out of 6139318
  372528 words of memory out of 5000000
  9368 multiletter control sequences out of 15000+600000
  13085 words of font info for 49 fonts, out of 8000000 for 9000

@@ -1,0 +1,19 @@
+%creamos el metodo para hacer imagenes
+\makeatletter
+% ========= KEY DEFINITIONS =========
+\define@key{imagen}{height}{\def\imagen@height{#1}}
+\define@key{imagen}{url}{\def\imagen@url{#1}}
+\define@key{imagen}{minipageSize}{\def\imagen@minipageSize{#1}}
+\define@key{imagen}{caption}{\def\imagen@caption{#1}}
+\DeclareDocumentCommand{\imagen}{m m}{%
+  \begingroup%
+  % ========= KEY DEFAULTS + new ones =========
+  \setkeys{imagen}{height={2cm},url={ahorita miro},minipageSize={0.3\linewidth},caption={ahorita miro segundo},#1}%
+	\begin{minipage}{\imagen@minipageSize}
+	\includegraphics[height=\imagen@height]{#2}
+	\captionsetup{justification=centering}
+	\captionof{figure}{\imagen@caption}
+	\end{minipage}
+\endgroup%
+}
+\makeatother

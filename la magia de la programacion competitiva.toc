@@ -1,36 +1,43 @@
 \select@language {spanish}
 \contentsline {chapter}{Lista de figuras}{5}
 \contentsline {chapter}{Lista de tablas}{7}
-\contentsline {chapter}{\numberline {1}matem\IeC {\'a}ticas}{9}
-\contentsline {section}{\numberline {1.1}sucesiones y series}{9}
-\contentsline {subsection}{\numberline {1.1.1}sucesi\IeC {\'o}n aritm\IeC {\'e}tica}{9}
-\contentsline {subsection}{\numberline {1.1.2}sucesi\IeC {\'o}n geom\IeC {\'e}trica}{9}
-\contentsline {subsection}{\numberline {1.1.3}serie aritm\IeC {\'e}tica}{9}
-\contentsline {subsection}{\numberline {1.1.4}serie geom\IeC {\'e}trica}{9}
-\contentsline {chapter}{\numberline {2}geometricos}{11}
-\contentsline {section}{\numberline {2.1}formulas de geometr\IeC {\'\i }a}{11}
-\contentsline {section}{\numberline {2.2}estructuras geom\IeC {\'e}tricas}{11}
-\contentsline {subsection}{\numberline {2.2.1}puntos}{11}
-\contentsline {subsubsection}{punto de enteros}{11}
-\contentsline {subsubsection}{punto de reales}{11}
-\contentsline {subsubsection}{ordenamiento de puntos}{11}
-\contentsline {subsubsection}{saber si dos puntos son iguales}{12}
-\contentsline {subsubsection}{distancia eucl\IeC {\'\i }dea entre 2 puntos}{12}
-\contentsline {subsubsection}{rotar un punto con respecto al origen}{12}
-\contentsline {subsection}{\numberline {2.2.2}lineas}{12}
-\contentsline {subsubsection}{hallar una recta con 2 puntos}{12}
-\contentsline {subsubsection}{saber si dos lineas son paralelas}{13}
-\contentsline {subsubsection}{saber si 2 lineas son iguales}{13}
-\contentsline {subsubsection}{intersecci\IeC {\'o}n entre 2 lineas}{13}
-\contentsline {subsection}{\numberline {2.2.3}vectores}{13}
-\contentsline {subsection}{\numberline {2.2.4}c\IeC {\'\i }rculos}{13}
-\contentsline {subsubsection}{\IeC {\'a}ngulos en una circunferencia}{13}
-\contentsline {subsection}{\numberline {2.2.5}tri\IeC {\'a}ngulos}{13}
-\contentsline {subsection}{\numberline {2.2.6}vectores}{13}
-\contentsline {section}{\numberline {2.3}representaci\IeC {\'o}n de un pol\IeC {\'\i }gono}{13}
-\contentsline {section}{\numberline {2.4}per\IeC {\'\i }metro de un pol\IeC {\'\i }gono}{13}
-\contentsline {section}{\numberline {2.5}area de un pol\IeC {\'\i }gono}{13}
-\contentsline {section}{\numberline {2.6}comprobar si un punto esta dentro de un pol\IeC {\'\i }gono}{13}
-\contentsline {section}{\numberline {2.7}comprobar que un pol\IeC {\'\i }gono es convexo}{13}
-\contentsline {section}{\numberline {2.8}cortar un pol\IeC {\'\i }gono con una linea recta}{13}
-\contentsline {section}{\numberline {2.9}cubierta convexa}{13}
+\contentsline {chapter}{\numberline {1}recursividad}{9}
+\contentsline {section}{\numberline {1.1}Descripci\IeC {\'o}n y Motivaci\IeC {\'o}n}{9}
+\contentsline {section}{\numberline {1.2}Ejemplos}{11}
+\contentsline {chapter}{\numberline {2}matem\IeC {\'a}ticas}{17}
+\contentsline {section}{\numberline {2.1}sucesiones y series}{17}
+\contentsline {subsection}{\numberline {2.1.1}sucesi\IeC {\'o}n aritm\IeC {\'e}tica}{17}
+\contentsline {subsection}{\numberline {2.1.2}sucesi\IeC {\'o}n geom\IeC {\'e}trica}{17}
+\contentsline {subsection}{\numberline {2.1.3}serie aritm\IeC {\'e}tica}{17}
+\contentsline {subsection}{\numberline {2.1.4}serie geom\IeC {\'e}trica}{17}
+\contentsline {chapter}{\numberline {3}geometricos}{19}
+\contentsline {section}{\numberline {3.1}formulas de geometr\IeC {\'\i }a}{19}
+\contentsline {section}{\numberline {3.2}estructuras geom\IeC {\'e}tricas}{19}
+\contentsline {subsection}{\numberline {3.2.1}puntos}{19}
+\contentsline {subsubsection}{punto de enteros}{19}
+\contentsline {subsubsection}{punto de reales}{19}
+\contentsline {subsubsection}{ordenamiento de puntos}{19}
+\contentsline {subsubsection}{saber si dos puntos son iguales}{20}
+\contentsline {subsubsection}{distancia eucl\IeC {\'\i }dea entre 2 puntos}{20}
+\contentsline {subsubsection}{rotar un punto con respecto al origen}{20}
+\contentsline {subsection}{\numberline {3.2.2}lineas}{20}
+\contentsline {subsubsection}{hallar una recta con 2 puntos}{20}
+\contentsline {subsubsection}{saber si dos lineas son paralelas}{21}
+\contentsline {subsubsection}{saber si 2 lineas son iguales}{21}
+\contentsline {subsubsection}{intersecci\IeC {\'o}n entre 2 lineas}{21}
+\contentsline {subsection}{\numberline {3.2.3}vectores}{21}
+\contentsline {subsection}{\numberline {3.2.4}c\IeC {\'\i }rculos}{21}
+\contentsline {subsubsection}{\IeC {\'a}ngulos en una circunferencia}{21}
+\contentsline {subsection}{\numberline {3.2.5}tri\IeC {\'a}ngulos}{21}
+\contentsline {subsection}{\numberline {3.2.6}vectores}{21}
+\contentsline {section}{\numberline {3.3}representaci\IeC {\'o}n de un pol\IeC {\'\i }gono}{21}
+\contentsline {section}{\numberline {3.4}per\IeC {\'\i }metro de un pol\IeC {\'\i }gono}{21}
+\contentsline {section}{\numberline {3.5}area de un pol\IeC {\'\i }gono}{21}
+\contentsline {section}{\numberline {3.6}comprobar si un punto esta dentro de un pol\IeC {\'\i }gono}{21}
+\contentsline {section}{\numberline {3.7}comprobar que un pol\IeC {\'\i }gono es convexo}{21}
+\contentsline {section}{\numberline {3.8}cortar un pol\IeC {\'\i }gono con una linea recta}{21}
+\contentsline {section}{\numberline {3.9}cubierta convexa}{21}
+\contentsline {chapter}{\numberline {4}Estructura de datos}{23}
+\contentsline {section}{\numberline {4.1}Descripci\IeC {\'o}n y Motivaci\IeC {\'o}n}{23}
+\contentsline {section}{\numberline {4.2}Complejidad}{23}
+\contentsline {section}{\numberline {4.3}Estructuras de datos lineales}{23}

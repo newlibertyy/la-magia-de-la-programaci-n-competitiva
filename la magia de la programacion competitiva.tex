@@ -7,11 +7,17 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{enumerate}
+\usepackage{listings}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xparse}
+\usepackage{pgfkeys}
+\usepackage{keyval,xparse}% http://ctan.org/pkg/{keyval,xparse}
+
+
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
  
-\usepackage{listings}
 \lstset{ frame=Ltb,
      framerule=0pt,
      aboveskip=0.5cm,
@@ -49,10 +55,14 @@
    {language=C++,}
  
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
 \author{Comunidad new liberty}
 \title{La magia de la programación competitiva}
 
 \begin{document}
+\input{scripts/scripts.tex}
+
 \maketitle
 \tableofcontents
 \cleardoublepage
@@ -62,6 +72,9 @@
 \addcontentsline{toc}{chapter}{Lista de tablas}
 \listoftables
 \cleardoublepage
+
+\input{capitulo-001-recursividad/recursividad.tex}
 \input{capitulo-002-matematicas/matematicas.tex}
 \input{capitulo-004-geometricos/geometricos.tex}
+\input{capitulo-005-estructuras/estructuras.tex}
 \end{document}

@@ -1,0 +1,12 @@
+\subsection{ecuaciones diofanticas lineales de 2 variables }
+estas ecuaciones son de la forma $ax+by=c$ donde a, b y c son números enteros y el problema se encuentra en calcular
+2 enteros x e y que satisfagan la ecuación, la ecuación tiene múltiples soluciones y sirven comúnmente para solucionar congruencias como $ax+b\equiv cx+d \mod{m}$ siendo a,b,c,d números conocidos utilizando las propiedades de la aritmética modular tenemos\\
+$(ax+b)-(cx+d)=ym$\\
+$(a-c)x+(b-d)=ym$\\
+$(c-a)x+ym=(b-d)$\\
+para solucionar la ecuación de la forma $ax+by=c$  tenemos que garantizar que $gcd(a,b)|c$
+si no se cumple esta condición la ecuación no tendrá soluciones enteras
+si  se cumple utilizamos el algoritmo de Euclides  y hallamos s y t $at+bs=gcd(a,b)$
+multiplicamos por c a ambos lados y dividimos por $gcd(a,b)$ y así hallamos nuestra primera solución
+donde $x_{0}=\frac{tc}{gcd(a,b)}$ y $y_{0}=\frac{st}{gcd(a,b)}$ \\
+las siguientes soluciones son de la forma $x = x_{0} + \frac{b}{d}n$ y $y = y_{0} - \frac{a}{d}n$

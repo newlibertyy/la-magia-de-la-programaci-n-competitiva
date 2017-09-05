@@ -1,0 +1,11 @@
+# ignorar los archivos que coincidan con los siguientes patrones 
+ 
+*.bib 
+*.aux
+*.lof
+*.log
+*.lot
+*.pdf
+*.gz
+*.toc
+

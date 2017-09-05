@@ -1,6 +1,6 @@
 \documentclass[11pt,a4paper]{book}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, es-lcroman]{babel} 
+\usepackage[spanish, es-lcroman]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -12,12 +12,11 @@
 \usepackage{xparse}
 \usepackage{pgfkeys}
 \usepackage{keyval,xparse}% http://ctan.org/pkg/{keyval,xparse}
-
-
+\usepackage{cite}
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
- 
+
 \lstset{ frame=Ltb,
      framerule=0pt,
      aboveskip=0.5cm,
@@ -41,19 +40,19 @@
      numberfirstline = false,
      breaklines=true,
    }
- 
+
 % minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]
    {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
- 
+
 \lstdefinestyle{consola}
    {basicstyle=\scriptsize\bf\ttfamily,
     backgroundcolor=\color{gray75},
    }
- 
+
 \lstdefinestyle{C}
    {language=C++,}
- 
+
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
@@ -66,7 +65,7 @@
 \maketitle
 \tableofcontents
 \cleardoublepage
-\addcontentsline{toc}{chapter}{Lista de figuras} 
+\addcontentsline{toc}{chapter}{Lista de figuras}
 \listoffigures
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Lista de tablas}
@@ -77,4 +76,11 @@
 \input{capitulo-002-matematicas/matematicas.tex}
 \input{capitulo-004-geometricos/geometricos.tex}
 \input{capitulo-005-estructuras/estructuras.tex}
+\\
+\\
+Puedes verlo en \cite{Patricio2011}. Te recomiendo leer \cite{Patricio2011, Zacarias2009, Alfonso2010b, Alfonso2010a}.
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{acm} % estilo de la bibliografía.
+\bibliography{bibliografia}
 \end{document}

@@ -8,4 +8,6 @@
 *.pdf
 *.gz
 *.toc
+*.o
+*.exe
 

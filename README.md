@@ -1,9 +1,8 @@
 # la magia de la programación competitiva
-:::python
-   import lifetime
-
-   for each_day in lifetime.days():
-       carpe_diem()
+```python
+def hola_mundo():
+   return "hola mundo"
+```
 [descripcion del proyecto]
 [uso]
 [documentación]

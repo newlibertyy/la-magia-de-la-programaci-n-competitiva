@@ -14,5 +14,3 @@
 *.blg
 *.fdb_latexmk
 *.fls
-**/codigos/
-!**codigos/.cpp

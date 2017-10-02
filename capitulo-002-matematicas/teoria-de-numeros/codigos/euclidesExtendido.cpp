@@ -1,7 +1,5 @@
-\subsection{algoritmo de Euclides extendido}
-el algoritmo de Euclides extendido sirve para hallar 2 números t y s que dados a y b\\
-$at+bs=gcd(a,b)$
-\begin{lstlisting}[style=C,caption=euclidesExtendido.cpp]
+#include <bits/stdc++.h>
+using namespace std;
 int x,y,d;
 void euclidesExtendido(int a, int b) {
     //caso base
@@ -17,4 +15,8 @@ void euclidesExtendido(int a, int b) {
 	x = x1;
 	y = y1;
 }
-\end{lstlisting}
+
+int main(){
+    euclidesExtendido(20,10);
+    cout<<x<<" "<<y<<endl;
+}

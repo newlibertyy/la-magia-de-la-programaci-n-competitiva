@@ -10,6 +10,6 @@ int euclides(int a,int b){
     return b;
 }
 int main(){
-    cout<<euclides(150,180)<<endl;
+    cout<<euclides(150,170)<<endl;
 
 }

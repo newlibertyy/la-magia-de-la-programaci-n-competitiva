@@ -17,6 +17,6 @@ void euclidesExtendido(int a, int b) {
 }
 
 int main(){
-    euclidesExtendido(20,10);
+    euclidesExtendido(10,20);
     cout<<x<<" "<<y<<endl;
 }

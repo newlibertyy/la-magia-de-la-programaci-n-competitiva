@@ -1,8 +1,11 @@
 \subsection{número de combinaciones de n elementos tomados de a m}
 el numero de combinaciones de n elementos cogidos de m son el numero de formas que podemos coger m elementos de los n sin importar su orden\\
-formulas:\\
-$c(n,m)=\frac{n!}{m!(n-m)!}$\\
-\\
-formula recursiva:\\
-casos bases $c(n,n)=c(n,0)=1$\\
-de mas casos $c(n,m)=c(n-1,k)+c(n-1,k-1)$
+\subsubsection{formula:}
+$\binom{m}{n}=\frac{m!}{n!(m-n)!}$
+\subsubsection{formula recursiva:}
+  casos bases $\binom{m}{m}=\binom{m}{0}=1$\\
+  \indent de mas casos $\binom{m}{n}=\binom{m-1}{n}+\binom{m-1}{n-1}$
+\subsection{propiedades de los números combinatorios:}
+  1)$\binom{m}{n}=\binom{m}{m-n}$\\
+  \indent 2)$\binom{m}{m-1}=m$\\
+  \indent 3)$\binom{m}{1}=m$

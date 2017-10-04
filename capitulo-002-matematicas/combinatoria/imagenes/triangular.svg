@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg2"
+   width="1207"
+   height="620"
+   viewBox="0 0 1207 620"
+   sodipodi:docname="triangular.svg"
+   inkscape:export-filename="/home/can/GitHub proyects/la-magia-de-la-programaci-n-competitiva/capitulo-002-matematicas/combinatoria/imagenes/triangular.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="694"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="0.44289373"
+     inkscape:cx="379.04452"
+     inkscape:cy="300.7216"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <text
+     id="text825"
+     y="485.10388"
+     x="901.43451"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       y="485.10388"
+       x="901.43451"
+       id="tspan823"
+       sodipodi:role="line">6</tspan></text>
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833"
+     cx="139.98843"
+     cy="356.95721"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-3"
+     cx="417.7074"
+     cy="356.95721"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-6"
+     cx="555.43799"
+     cy="356.95721"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-7"
+     cx="483.18585"
+     cy="248.36717"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-5"
+     cx="781.22583"
+     cy="356.95721"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-35"
+     cx="916.69855"
+     cy="356.95721"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-62"
+     cx="1060.9237"
+     cy="356.95721"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-9"
+     cx="830.89905"
+     cy="248.36717"
+     r="42.601559"
+     inkscape:transform-center-x="-327.39231"
+     inkscape:transform-center-y="225.7878" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-1"
+     cx="993.18732"
+     cy="248.36717"
+     r="42.601559" />
+  <circle
+     style="fill:#000000;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path833-2"
+     cx="909.64587"
+     cy="149.93755"
+     r="42.601559" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot898"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     transform="translate(0,17.13707)"><flowRegion
+       id="flowRegion900"><rect
+         id="rect902"
+         width="83.541489"
+         height="81.283607"
+         x="99.346634"
+         y="432.59613" /></flowRegion><flowPara
+       id="flowPara904">1</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot906"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+       id="flowRegion908"><rect
+         id="rect910"
+         width="124.18329"
+         height="42.899681"
+         x="442.5441"
+         y="450.65915" /></flowRegion><flowPara
+       id="flowPara912">22</flowPara></flowRoot>  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     x="485.44376"
+     y="485.38708"
+     id="text916"><tspan
+       sodipodi:role="line"
+       id="tspan914"
+       x="485.44376"
+       y="485.38708">2</tspan></text>
+</svg>

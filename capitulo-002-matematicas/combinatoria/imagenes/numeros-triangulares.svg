@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg2"
+   width="1207"
+   height="620"
+   viewBox="0 0 1207 620"
+   sodipodi:docname="numeros-triangulares.svg"
+   inkscape:export-filename="/home/can/GitHub proyects/la-magia-de-la-programaci-n-competitiva/capitulo-002-matematicas/combinatoria/imagenes/triangular.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="694"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="0.44289373"
+     inkscape:cx="739.17606"
+     inkscape:cy="298.99456"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot906"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+       id="flowRegion908"><rect
+         id="rect910"
+         width="124.18329"
+         height="42.899681"
+         x="442.5441"
+         y="450.65915" /></flowRegion><flowPara
+       id="flowPara912">22</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot853"
+     style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
+       id="flowRegion855"><rect
+         id="rect857"
+         width="652.52673"
+         height="440.28619"
+         x="237.07719"
+         y="-12.205834" /></flowRegion><flowPara
+       id="flowPara859"></flowPara></flowRoot>  <g
+     id="g881"
+     transform="translate(0,102.81234)">
+    <text
+       id="text835"
+       y="71.335648"
+       x="630.6925"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="71.335648"
+         x="630.6925"
+         id="tspan833"
+         sodipodi:role="line">1</tspan></text>
+    <text
+       id="text839"
+       y="141.32986"
+       x="611.59094"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="141.32986"
+         x="611.59094"
+         id="tspan837"
+         sodipodi:role="line">1 1</tspan></text>
+    <text
+       id="text843"
+       y="211.3241"
+       x="592.48938"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="211.3241"
+         x="592.48938"
+         id="tspan841"
+         sodipodi:role="line">1 2 1</tspan></text>
+    <text
+       id="text847"
+       y="274.54468"
+       x="573.38782"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         id="tspan849"
+         y="274.54468"
+         x="573.38782"
+         sodipodi:role="line">1 3 3 1</tspan></text>
+    <text
+       id="text863"
+       y="324.21799"
+       x="554.28625"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="324.21799"
+         x="554.28625"
+         id="tspan861"
+         sodipodi:role="line">1 4 6 4 1</tspan></text>
+    <text
+       id="text867"
+       y="371.63342"
+       x="509.71597"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="371.63342"
+         x="509.71597"
+         id="tspan865"
+         sodipodi:role="line">1 5 10 10 5 1</tspan></text>
+  </g>
+  <path
+     style="fill:#0000ff;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:0.475"
+     d="M 686.39491,267.77104 C 580.27464,484.52732 578.01676,491.30096 578.01676,491.30096 l 42.89968,20.3209 101.60451,-221.27204 z"
+     id="path883"
+     inkscape:connector-curvature="0" />
+</svg>

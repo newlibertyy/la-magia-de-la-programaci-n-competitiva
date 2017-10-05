@@ -15,7 +15,7 @@
    height="620"
    viewBox="0 0 1207 620"
    sodipodi:docname="triangulo-de-pascal-combinatoria.svg"
-   inkscape:export-filename="/home/can/GitHub proyects/la-magia-de-la-programaci-n-competitiva/capitulo-002-matematicas/combinatoria/imagenes/triangular.png"
+   inkscape:export-filename="/home/can/GitHub proyects/la-magia-de-la-programaci-n-competitiva/capitulo-002-matematicas/combinatoria/imagenes/triangulo-de-pascal-combinatoria.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
@@ -27,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -47,8 +47,8 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="0.44289373"
-     inkscape:cx="482.71043"
-     inkscape:cy="341.37545"
+     inkscape:cx="724.87259"
+     inkscape:cy="431.69057"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"

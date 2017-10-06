@@ -15,7 +15,7 @@
    height="620"
    viewBox="0 0 1207 620"
    sodipodi:docname="caminos-catalan.svg"
-   inkscape:export-filename="/home/can/GitHub proyects/la-magia-de-la-programaci-n-competitiva/capitulo-002-matematicas/combinatoria/imagenes/arbol-catalan.png"
+   inkscape:export-filename="/home/can/GitHub proyects/la-magia-de-la-programaci-n-competitiva/capitulo-002-matematicas/combinatoria/imagenes/caminos-catalan.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
@@ -47,8 +47,8 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="0.62634632"
-     inkscape:cx="581.00115"
-     inkscape:cy="384.3977"
+     inkscape:cx="517.13872"
+     inkscape:cy="320.53527"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -97,7 +97,7 @@
   </g>
   <g
      id="g1077"
-     transform="translate(41.510582,-23.948412)">
+     transform="translate(-142.09391,-23.948412)">
     <rect
        y="216.07011"
        x="732.82141"
@@ -128,23 +128,23 @@
        y="340.60184" />
   </g>
   <path
-     style="fill:none;stroke:#ff0000;stroke-width:5.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-     d="m 194.78042,441.18517 h 249.06347 v -249.06348 0"
+     style="fill:none;stroke:#ff0000;stroke-width:5.80000019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 194.78042,439.73518 h 249.06347 v -249.06348 0"
      id="path1081"
      inkscape:connector-curvature="0" />
   <path
-     style="fill:none;stroke:#ff0000;stroke-width:5.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-     d="M 774.33199,441.18519 H 898.86373 V 316.65343 h 124.53177 v -124.53173 0 0"
+     style="fill:none;stroke:#ff0000;stroke-width:5.80000019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 590.72749,439.73519 H 715.25923 V 315.20343 H 839.791 v -124.53173 0 0"
      id="path1083"
      inkscape:connector-curvature="0" />
   <path
      style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="M 194.78042,441.18517 443.84389,192.12169 v 0"
+     d="M 194.78042,441.18518 443.84389,192.1217 v 0"
      id="path1089"
      inkscape:connector-curvature="0" />
   <path
      style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="M 774.33199,441.18519 1023.3955,192.1217"
+     d="M 590.72749,441.18519 839.791,192.1217"
      id="path1091"
      inkscape:connector-curvature="0" />
 </svg>

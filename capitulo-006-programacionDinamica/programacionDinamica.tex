@@ -8,3 +8,37 @@ La programación dinámica es quizás uno de los temas más complejos de tratar,
 
 \section{Memorización}
 La primera técnica que estudiaremos es la memorización, esta es muy util en algoritmos recursivos ya que evita que recalculemos desde una simple operacion hasta una rama completa de iteraciones. Esto se entiende mejor con un ejemplo, recordemos el algoritmo recursivo de fibbonacci.
+
+\imagen{minipageSize=1\linewidth,height=6cm,caption=fibonacci.png}{capitulo-006-programacionDinamica/imagenes/fibonacci.png}
+
+Si observamos los nodos coloreados, vemos que recalculamos mucho en especial toda la recursion de f(3) pintada en rojo, mientras mas crecemos en el f(n), más grandes son los subarboles recursivos que recalculamos, es por eso que si memorizamos las soluciones solo hariamos los siguientes calculos:
+
+\imagen{minipageSize=1\linewidth,height=6cm,caption=fibonacciMemorizacion.png}{capitulo-006-programacionDinamica/imagenes/fibonacciMemorizacion.png}
+
+Solo calculamos los nodos pintados en verdes, los resultados de los nodos rojos los obtenemos por medio de la memorización, en este ejemplo nos ahorramos más de la mitad de iteraciones. Esto se lograria con un código como el siguiente:
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=fibonacciMemorizacion.cpp]
+int memorizacion[100];
+int fibonacci(int n){
+    if(n==0)return 0;
+    if(n==1)return 1;
+    if(memorizacion[n]==0){
+        memorizacion[n] = fibonacci(n-1) + fibonacci(n-2);
+    }
+    return memorizacion[n];
+}
+\end{lstlisting}
+\end{minipage}
+
+Este código es una pequeña modificacion al fibbonacciRecursivo.cpp del capitulo de recursividad, lo único que hacemos es agregarle un arreglo en el cual memorizamos las soluciones que vamos resolviendo, es importante que la recursión tenga acceso a este arreglo, puede hacerse creando el arreglo como variable global o mandandolo como parametro, en este caso y con fines de maratones de programación se usa como variable global ya que es más facil de codificar para estas competencias, pero en proyectos siempre recomendamos seguir las buenas practicas de programación.
+\\Otro ejemplo en el que el uso de la memorización nos puede ayudar es en hallar los coeficientes binomiales por medio de su formula recursiva (ver capitulo matematico)
+\\${n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}$ para todos los números enteros $n,k > 0$,
+\\con valores iniciales
+\\${n \choose 0}=1$ para todos los números enteros $n>=0$,
+\\${0 \choose k}=0$ para todos los números enteros $k>0$.
+\\Por ejemplo ${3 \choose 2}$ funciona asi:
+\\\imagen{minipageSize=1\linewidth,height=6cm,caption=combinatoria.png}{capitulo-006-programacionDinamica/imagenes/combinatoria.png}
+
+Podemos observar que con memorización nos ahorramos algunas repeticiones, pero si examinamos con detenimiento el crecimiento de la recursión y de la memorización, podemos observar lo siguiente:
+El crecimiento de la recursión es casi exponencial, ya que casi cada nodo se divide en 2, generando una complejidad un poco menor que $O(2^n)$, sin embargo el crecimiento de la memorización es de $n^2$ ya que si tenemos ${n \choose m}$ necesitariamos poder almacenar unicamente las combinaciónes desde $0$ hasta $n$ contra las combinaciones desde $0$ hasta $m$.

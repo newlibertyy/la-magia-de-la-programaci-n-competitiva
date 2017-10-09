@@ -1,9 +1,8 @@
 \chapter{Programación Dinamica}
 \section{Descripción y Motivación}
 
-La programación dinámica es quizás uno de los temas más complejos de tratar, por que más que teoría es casi un paradigma de programación.
-\\Estudiaremos las principales y más utiles técnicas usadas en programación dinámica.
-\\Pero ¿qué es la programación dinámica?, en general es aplicar técnicas para resolver problemas de optimización, maximización, minimización o conteo.
+La programación dinámica (resumido como dp) es quizás uno de los temas más complejos de tratar, por que más que teoría es casi un paradigma de programación.
+\\Pero ¿qué es la programación dinámica?, la principal caracteristica de la programación dinámica es que se puede solucionar hallando la solucion de subproblemas, en general soluciona problemas de tipo optimización, maximización, minimización o conteo.
 
 
 \section{Memorización}
@@ -42,3 +41,54 @@ Este código es una pequeña modificacion al fibbonacciRecursivo.cpp del capitul
 
 Podemos observar que con memorización nos ahorramos algunas repeticiones, pero si examinamos con detenimiento el crecimiento de la recursión y de la memorización, podemos observar lo siguiente:
 El crecimiento de la recursión es casi exponencial, ya que casi cada nodo se divide en 2, generando una complejidad un poco menor que $O(2^n)$, sin embargo el crecimiento de la memorización es de $n^2$ ya que si tenemos ${n \choose m}$ necesitariamos poder almacenar unicamente las combinaciónes desde $0$ hasta $n$ contra las combinaciones desde $0$ hasta $m$.
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=coeficientesBinomiales.cpp]
+int memorizacion[100][100];
+int coeficienteBinomial(int n,int k){
+    //casos base
+    if(n>=0 && k==0)return 1;
+    if(k>0 && n==0)return 0;
+    if(memorizacion[n][k]==0){
+        memorizacion[n][k] = coeficienteBinomial(n-1,k-1)+coeficienteBinomial(n-1,k);
+    }
+    return memorizacion[n][k];
+}
+\end{lstlisting}
+\end{minipage}
+
+Hay varias cosas ha tener en cuenta cuando se use esta técnica, la primera son los limites del arreglo de memorización, en este caso creamos un arreglo de $100*100$, lo cual nos condiciona a no poder calcular un $n$ o un $k$ superior a 100, la decisión entre usar memorización y no usarla, dependera del poder de computo y almacenamiento que se desea ocupar en el algoritmo. También se debe tener en cuenta los estados posibles de la solución, en los dos ejemplos preguntamos si una casilla en el arreglo es igual a 0 para guardar una nueva solución,$memorizacion[n] == 0$ y $memorizacion[n][k] == 0$, pero hay recursiones en las que valores positivos, negativos, cero y hasta objetos sean resultados válidos, en estos casos se puede utilizar un arreglo booleano extra que indique si esta solución ya ha sido calculada antes.
+
+\section{Problemas clásicos}
+
+\subsection{Problema de la mochila}
+Dado un conjunto de objetos,con su valor y peso. Determine el valor máximo que puedes cargar en una mochila que soporta $w$ peso máximo.
+Este problema ha sido muy importante en las ciencias de la computación, por ser un problema NP-Completo. Si deseas ahondar más en el tema, puedes encontrar mucha más información, al momento de escribir el capitulo recomendaria mucho más la información en ingles, buscando como ``knapsack problem''. Existen variantes al problema, utilizaremos la mas común que es ``problema de la mochila 0-1'', consiste en que solo se puede llevar una copia de cada objeto. 
+Para solucionar el problema, lo primero que se nos podria ocurrir es evaluar todas las posibilidades, esto nos dara la respuesta optima, pero solo podremos usarla en casos muy pequeños ya que su complejidad es de $O(2^n)$. Otra solución rápida seria ordenar los objetos de menor tamaño a mayor y empezar a introducirlos hasta que no quepan más, u ordenarlos de mayor valor a menor, pero esta solución no nos dara el valor máximo posible.
+Existe una solución ``lineal'' para el problema de la mochila, más adelante explicare por que pongo entre comillas lineal. Como la solución de problemas de programación dinámica requiere solucionar subproblemas, muchas veces podemos plantarnos la idea de que pasaria si tuvieramos la respuesta a un subproblema para hallar la solución de este y asi mismo la solución del subproblema es la solución del subproblema del subproblema, frenemos antes de que explote nuestro cerebro y vamos a solucionar el problema de la mochila, podemos suponer que nos falta únicamente decidir si meter un objeto o no meterlo, y que conocemos el valor máximo a cualquier capacidad $<=w$ de mochila. Por ejemplo tenemos una mochila que le caben 10 kilogramos, ya hemos calculado su valor máximo hasta el momento. Pero nos dimos cuenta que nos falto analizar el objeto $o_i$ un oso de 3 kilogramos, ahora tenemos dos opciones para maximizar nuestro valor: dejarla tal cual como esta, o liberar 3 kilogramos y meter el oso (nota que liberar 3 kilogramos puede consistir en vaciar toda la mochila y llenar 7 kilogramos con otras cosas mas optimas). Hacer este proceso nos garantiza la solución optima entre meter o no el oso de 3 kilogramos, si profundizamos el subproblema seria maximizar el valor que le cabria a una mochila de 7 kilogramos con el objeto $o_{i-1}$. Dado dp[i][j] el valor máximo con los elementos [1,2,3...,i] en una mochila de capacidad j,w[i] el peso del $o_i$ objeto y v[i] el valor del $o_i$ objeto la formula que resuelve este problema es:
+
+$dp[0][j] = 0$
+
+$dp[i][j]= max \left\{\begin{array}{lr} dp[i-1][j]\\dp[i-1][j-w[i]]+v[i] & \text{si } j>=w[i] \end{array}\right\}$
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=mochila.cpp]
+int dp[100][100];
+int w[100];
+int v[100];
+int mochila(int i,int j){
+    //casos base
+    if(i==0)return 0;
+    if(dp[i][j]==0){
+        dp[i][j] = mochila(i-1,j);
+        if(j>=w[i]){
+            dp[i][j] = max(mochila(i-1,j),mochila(i-1,j-w[i])+v[i]);
+        }
+    }
+    return dp[i][j];
+}
+\end{lstlisting}
+\end{minipage}
+
+En este ejemplo usamos una entrada maxima de 100 objetos, y un tamaño maximo de la mochila de 100. Ahora la complejidad de este algoritmo es de $O(n*W)$ siendo $n$ la cantidad de objetos y $W$ el peso máximo de la mochila, como nota curiosa puse ``lineal'' entre comillas por que $W$ no esta condicionado por la entrada que son los $n$ objetos, haciendo de esta solucion inaceptable por ejemplo para ejercicios de pocos objetos con un tamaño descomunal.
+Al momento de escribir este cápitulo, se podia encontrar esta estupenda calculadora del problema de mochila en este link \url{http://karaffeltut.com/NEWKaraffeltutCom/Knapsack/knapsack.html}. En caso de que ya no exista, pueden buscar ``knapsack problem calculator'' y de seguro encontraran una similar.

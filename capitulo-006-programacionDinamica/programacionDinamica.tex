@@ -58,9 +58,7 @@ int coeficienteBinomial(int n,int k){
 \end{minipage}
 
 Hay varias cosas ha tener en cuenta cuando se use esta técnica, la primera son los limites del arreglo de memorización, en este caso creamos un arreglo de $100*100$, lo cual nos condiciona a no poder calcular un $n$ o un $k$ superior a 100, la decisión entre usar memorización y no usarla, dependera del poder de computo y almacenamiento que se desea ocupar en el algoritmo. También se debe tener en cuenta los estados posibles de la solución, en los dos ejemplos preguntamos si una casilla en el arreglo es igual a 0 para guardar una nueva solución,$memorizacion[n] == 0$ y $memorizacion[n][k] == 0$, pero hay recursiones en las que valores positivos, negativos, cero y hasta objetos sean resultados válidos, en estos casos se puede utilizar un arreglo booleano extra que indique si esta solución ya ha sido calculada antes.
-
 \section{Problemas clásicos}
-
 \subsection{Problema de la mochila}
 Dado un conjunto de objetos,con su valor y peso. Determine el valor máximo que puedes cargar en una mochila que soporta $w$ peso máximo.
 Este problema ha sido muy importante en las ciencias de la computación, por ser un problema NP-Completo. Si deseas ahondar más en el tema, puedes encontrar mucha más información, al momento de escribir el capitulo recomendaria mucho más la información en ingles, buscando como ``knapsack problem''. Existen variantes al problema, utilizaremos la más común que es ``problema de la mochila 0-1'', consiste en que solo se puede llevar una copia de cada objeto. 
@@ -93,3 +91,41 @@ int mochila(int i,int j){
 
 En este ejemplo usamos una entrada maxima de 100 objetos, y un tamaño maximo de la mochila de 100. Ahora la complejidad de este algoritmo es de $O(n*W)$ siendo $n$ la cantidad de objetos y $W$ el peso máximo de la mochila, como nota curiosa puse ``lineal'' entre comillas por que $W$ no esta condicionado por la entrada que son los $n$ objetos,por lo cual el problema sigue considerandose NP-Completo,haciendo de esta solucion inaceptable por ejemplo para ejercicios de pocos objetos con un tamaño descomunal.
 \\Al momento de escribir este cápitulo, se podia encontrar esta estupenda calculadora del problema de mochila en este link \url{http://karaffeltut.com/NEWKaraffeltutCom/Knapsack/knapsack.html}. En caso de que ya no exista, pueden buscar ``knapsack problem calculator'' y de seguro encontraran una similar.
+\subsection{Problema de subsecuencia común más larga}
+El problema de subsecuencia común más larga (llamado Longest Common Subsequence o LCS en ingles) consiste en encontrar la subsecuencia más larga en común entre dos secuencias. En este subcapitulo estudiaremos una pequeña variante más sencilla que es hallar cuantos elementos tiene la subsecuencia común más larga, pero la solucion a hallar cual es la subsecuencia común más larga es muy similar. Una subsecuencia consiste en tomar $n$ elementos de la secuencia en el mismo orden, estos $n$ elementos pueden ser desde ninguno hasta todos, dos subsecuencias son comunes cuando contienen exactamente los mismos elementos en el mismo orden, y la subsecuencia común más larga es aquella que ninguna otra combinacion de las posibles subsecuencias entre las dos secuencias contenga mayor cantidad de elementos. Por ejemplo si tomamos las secuencias $a = [A,B,C,D,G,H]$ y $b=[A,E,D,F,H,R]$ la subsecuencia común mas larga es $[A,D,H]$
+\\\imagen{minipageSize=1\linewidth,height=6cm,caption=ejemploLCS.png}{capitulo-006-programacionDinamica/imagenes/ejemploLCS.png}
+\\Podriamos considerar que una solución seria ir recorriendo la primera secuencia vs la segunda, y cuando coincidan los elementos agregarlo al LCS, pero esto no siempre dara la respuesta correcta como en este caso $a2=[A,B,C,D]$ $b2=[A,C,D,B]$ ya que si lo hacemos recorriendolos unicamente obtendriamos $[A,B]$. Otra solución que si daria el resultado correcto seria probar todas las combinaciones entre subsecuencias, pero esto tendria una complejidad de $O(2^{n+m})$ siendo $n$ la cantidad de elementos de la primera secuencia y $m$ los elementos de la segunda.
+\\Una mejor solución aplicando dp consiste en lo siguiente: supongamos que conocemos la $LCS(i,j)$ de cualquier $a_i$,$b_j$ excepto $LCS(0,0)$, Siendo $i$,$j$ el indice desde donde inician las subsecuencias, por ejemplo $LCS(1,1)=[D,H]$ o $LCS(4,1)=[H]$ o $LCS(1,0)=[C,D]$ o $LCS(0,1)=[C,D]$.
+\\\imagen{minipageSize=1\linewidth,height=6cm,caption=ejemplosMultiplesLCS.png}{capitulo-006-programacionDinamica/imagenes/ejemplosMultiplesLCS.png} 
+\\Conociendo esto intentaremos solucionear $LCS(0,0)$ tendremos tres opciones:
+\begin{itemize}
+\item este caso solo es posible si $a_0 = b_0$ para este caso lo unico que debemos hacer es agregar el elemento al LCS y luego evaluar $LCS(1,1)$
+\item descartamos completamente agregar $b_0$ para esto lo unico que debemos hacer es evaluar $LCS(0,1)$ 
+\item descartamos completamente agregar $a_0$ para esto lo unico que debemos hacer es evaluar $LCS(1,0$
+\end{itemize}
+Un ejemplo más enfocado para la segunda y tercera opción es este: $a3=[A,B,C]$ $b3=[B,C]$ como $a3_0 \neq b3_0$ debemos evaluar $LCS(0,1)$ vs $LCS(1,0)$
+\\\imagen{minipageSize=1\linewidth,height=3cm,caption=ejemplosMultiples2LCS.png}{capitulo-006-programacionDinamica/imagenes/ejemplosMultiples2LCS.png}
+\\Si conocemos $LCS(0,1)$ , $LCS(1,0)$ y $LCS(1,1) + 1$ alguno de los tres debe ser la respuesta a $LCS(0,0)$ ya que las subsecuencias deben ser consecutivas, por eso al probar las 3 opciones realmente estamos probando todas las combinaciones posibles. Ahora que sabemos esto podemos imaginar que se cumple para cualquier $LCS(i,j)$ con algunas pequeñas modificaciones quedando asi:
+\\$LCS(i,m+1) = 0$ siendo $m$ el último elemento de $b$
+\\$LCS(n+1,j) = 0$ siendo $n$ el último elemento de $a$
+\\$LCS(i,j)= max \left\{\begin{array}{lr} LCS(i+1,j)\\LCS(i+1,j)\\1+LCS(i+1,j+1) & \text{si } a_i=b_j \end{array}\right\}$
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=mochila.cpp]
+int memorizacion[100][100];
+int lcs(int i,int j){
+    int m = b.size()-1;
+    int n = a.size()-1;
+    if(j==m+1)return 0;
+    if(i==n+1)return 0;
+    if(memorizacion[i][j]!=0)return memorizacion[i][j];
+    int maximo = max(lcs(i+1,j),lcs(i,j+1));
+    if(a[i]==b[j]){
+        maximo = max(maximo,1+lcs(i+1,j+1));
+    }
+    memorizacion[i][j] = maximo;
+    return memorizacion[i][j];
+}
+\end{lstlisting}
+\end{minipage}
+Aqui tambien usamos la técnica de memorización, y de hecho en casi todos los dps para no recalcular al solucionar subproblemas, ya que si no la usamos nuestro crecimiento puede llegar a ser exponencial perdiendo todo el sentido al esfuerzo realizado en la solución. En esta implementación consideramos el indice $0$ como el primer elemento de la secuencia, algunas implementaciones más sencillas lo consideran el último elemento, ya depende de las preferencias del codificador.
+\\Al momento de escribir este cápitulo, se podia encontrar esta calculadora del problema de subsecuencia común más larga en este link \url{http://lcs-demo.sourceforge.net/}, aun que en ella muestran el algoritmo iterativo y no recursivo, pero eso ya lo discutimos en el capitulo de recursividad, todos los algoritmos recursivos pueden ser escritos iterativamente. En caso de que ya no exista, pueden buscar ``Longest common subsecuence calculator'' y de seguro encontraran una similar.

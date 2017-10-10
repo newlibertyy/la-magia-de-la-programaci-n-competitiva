@@ -25,7 +25,7 @@ int sumaIterativa(int n){
 \end{lstlisting}
 \end{minipage}
 
-\begin{minipage}{\textwidth}
+	\begin{minipage}{\textwidth}
 Recursivo
 \begin{lstlisting}[style=C,caption=sumaRecursiva.cpp]
 int sumaRecursiva(int n){
@@ -43,8 +43,8 @@ Algo muy importante a tener en cuenta en los algoritmos recursivos es el caso ba
 en los algoritmos iterativos se debe saber cuando detener la ejecución en los algoritmos recursivos
 necesitamos saber en donde detenernos.
 En realidad los dos algoritmos que mostramos tienen una ligera
-diferencia aun que dan el mismo resultado. En nuestro algoritmo iterativo sumamos desde 0 hasta n de la
-siguiente manera: 0+1+2+3+...+n, pero en el recursivo sumamos desde n hasta 0: n+(n-1)+(n-2)...+0.
+diferencia aun que dan el mismo resultado. En nuestro algoritmo iterativo sumamos desde $0$ hasta $n$ de la
+siguiente manera: $0+1+2+3+...+n$, pero en el recursivo sumamos desde $n$ hasta $0$: $n+(n-1)+(n-2)...+0$.
 Si quisieramos que tuvieran un comportamiento mas similar podriamos programar el algoritmo recursivo
 de la siguiente manera:
 
@@ -60,32 +60,27 @@ int sumaRecursiva(int actual, int n){
 }
 \end{lstlisting}
 \end{minipage}
-
 El caso base esta muy ligado a la manera en que hacemos la recursividad, por lo general la 
 recursividad se hace disminuyendo los parametros del problema, pero no siempre es asi como 
 vimos en el segundo ejemplo, al igual que podemos hacer algoritmos iterativos con el contador
 ascendente o descendente y tenemos que generar la condicion de detener en base a este, en la
 recursividad también lo hacemos asi.
-
-Quizas el ejemplo mas claro de recursividad es factorial de n. Ya que la solucion de factorial
-de n es n * factorial de (n-1), y la solución de factorial de (n-1) es (n-1) * factorial de (n-2) y
-asi constantemente.
-
-Por ejemplo factorial de 5 es
-\\f(5) = 5*f(4)
-\\f(4) = 4*f(3)
-\\f(3) = 3*f(2)
-\\f(2) = 2*f(1)
-\\f(1) = 1
+\\Quizas el ejemplo mas claro de recursividad es factorial de $n$. Ya que la solucion de factorial
+de $n$ es $n * factorial de (n-1)$, y la solución de $factorial de (n-1) es (n-1) * factorial de (n-2)$ y asi consecutivamente. Por ejemplo factorial de 5 es:
+\\$f(5) = 5*f(4)$
+\\$f(4) = 4*f(3)$
+\\$f(3) = 3*f(2)$
+\\$f(2) = 2*f(1)$
+\\$f(1) = 1$
 \\por lo tanto
-\\f(2) = 2*f(1) = 2*1 = 2
-\\f(3) = 3*f(2) = 3*2 = 6
-\\f(4) = 4*f(3) = 4*6 = 24
-\\f(5) = 5*f(4) = 5*12 = 120
-
-Mas o menos de esa manera funciona la recursividad en código, se van guardando cada llamada al 
-metodo en una cola, al retornar regresa al metodo que la llamo. asi f(5)->f(4)->f(3)->f(2)->f(1)
-\begin{minipage}{\textwidth}
+\\$f(2) = 2*f(1) = 2*1 = 2$
+\\$f(3) = 3*f(2) = 3*2 = 6$
+\\$f(4) = 4*f(3) = 4*6 = 24$
+\\$f(5) = 5*f(4) = 5*12 = 120$
+\\Mas o menos de esa manera funciona la recursividad en código, se van guardando cada llamada al 
+metodo en una cola, al retornar regresa al metodo que la llamo. asi 
+\\$f(5)->f(4)->f(3)->f(2)->f(1)$
+\\\begin{minipage}{\textwidth}
 Iterativo
 \begin{lstlisting}[style=C,caption=factorialIterativo.cpp]
 int factorial(int n){
@@ -116,7 +111,7 @@ int factorial(int n){
 \end{minipage}
 
 Se debe tener cuidado al usar recursividad en no calcular muchas veces la misma solución, por ejemplo
-con el algoritmo de fibbonacci. su formula recursiva es f(n) = f(n-1) + f(n-2). Si ejecutamos por ejemplo f(5) sucederia lo siguiente:
+con el algoritmo de fibbonacci. su formula recursiva es $f(n) = f(n-1) + f(n-2)$. Si ejecutamos por ejemplo $f(5)$ sucederia lo siguiente:
 \\\imagen{height=10cm,caption=fibonacci.png}{capitulo-001-recursividad/imagenes/fibonacci.png}
 \\Podemos observar que recalculamos mucho, esto se puede resolver aplicando tecnicas de DP, pero eso lo veremos en otro capitulo.
 
@@ -128,7 +123,7 @@ un algoritmo para solucionar las torres de hanoi.
 \\Empecemos por el algoritmo de fibonacci, por definición la suseción de fibonacci comienza de la 
 siguiente forma : 0,1,1,2,3,5,8 ... , cada elemento es la suma de sus dos anteriores. Más  formalmente:
 
-f(n) = f(n-1) + f(n-2)
+$f(n) = f(n-1) + f(n-2)$
 \\Veamos primero como seria el algoritmo de fibonacci sin hacer uso de la recursión.
 
 \begin{minipage}{\textwidth}

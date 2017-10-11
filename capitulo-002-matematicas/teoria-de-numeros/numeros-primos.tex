@@ -40,3 +40,20 @@ void construir_criba()
 }
 \end{lstlisting}
 Este código fue sacado y editado de las presentaciones de la universidad EAFIT ver \cite{SemilleroProgramacion:Online}
+
+\subsubsection{Comprobar si un número es primo}
+Para saber si un un numero $p$ es primo, si $p$ es menor  que nuestro $n$ retornamos la negación de la criba, si no comprobamos si este es divisible por alguno de los primos que tenemos, si alguno lo divide significa que no es primo, esto solo  funciona si $p$ es menor que el ultimo primo que tengamos al cuadrado.
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=criba.cpp]
+bool esPrimo(long long N)
+{
+    if (N < criba.size())
+        return !criba[N];
+
+    for (int i = 0; i < (int)primos.size(); i++)
+        if (N % primos[i] == 0)
+            return false;
+    return true;
+}
+\end{lstlisting}
+\end{minipage}

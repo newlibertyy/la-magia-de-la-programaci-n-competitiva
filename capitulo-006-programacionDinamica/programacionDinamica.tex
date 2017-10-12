@@ -110,7 +110,7 @@ Un ejemplo más enfocado para la segunda y tercera opción es este: $a3=[A,B,C]$
 \\$LCS(n+1,j) = 0$ siendo $n$ el último elemento de $a$
 \\$LCS(i,j)= max \left\{\begin{array}{lr} LCS(i+1,j)\\LCS(i,j+1)\\1+LCS(i+1,j+1) & \text{si } a_i=b_j \end{array}\right\}$
 \\\begin{minipage}{\textwidth}
-\begin{lstlisting}[style=C,caption=mochila.cpp]
+\begin{lstlisting}[style=C,caption=LCS.cpp]
 int memorizacion[100][100];
 int lcs(int i,int j){
     int m = b.size()-1;
@@ -129,3 +129,40 @@ int lcs(int i,int j){
 \end{minipage}
 Aqui tambien usamos la técnica de memorización, y de hecho en casi todos los dps para no recalcular al solucionar subproblemas, ya que si no la usamos nuestro crecimiento puede llegar a ser exponencial perdiendo todo el sentido al esfuerzo realizado en la solución. En esta implementación consideramos el indice $0$ como el primer elemento de la secuencia, algunas implementaciones más sencillas lo consideran el último elemento, ya depende de las preferencias del codificador.
 \\Al momento de escribir este cápitulo, se podia encontrar esta calculadora del problema de subsecuencia común más larga en este link \url{http://lcs-demo.sourceforge.net/}, aun que en ella muestran el algoritmo iterativo y no recursivo, pero eso ya lo discutimos en el capitulo de recursividad, todos los algoritmos recursivos pueden ser escritos iterativamente. En caso de que ya no exista, pueden buscar ``Longest common subsecuence calculator'' y de seguro encontraran una similar.
+\subsection{Problema de la subsecuencia creciente más larga}
+Este problema también es llamado llamado (Longest Increasing Subsequence o LIS en ingles)
+Ya explicamos que es una subsecuencia en el problema de subsecuencia común más larga, este problema es similar, pero en vez de dos secuencias solo tenemos una y lo que debemos hallar es una subsecuencia en la cual todos sus elementos van de menor a mayor, usaremos la variante de calcular únicamente cuantos elementos posee la subsecuencia creciente más larga, ya que esta variante es más facil, pero para saber cuales son estos elementos se hace de la misma manera con unos pasos adicionales. Formalmente dado una secuencia $a$ hallar una subsecuencia $b$ tal que $b_i<b_j$ y $i<j$. Por ejemplo si tenemos la secuencia $[-7, 10, 9, 2, 3, 8, 8, 1, 2, 3, 4]$ la subsecuencia creciente más larga seria $[-7,1,2,3,4]$.
+Al igual que el problema de subsecuencia común más larga, si intentamos resolver este problema por medio de todas las subsecuencias posibles tendriamos una complejidad de $O(2^n)$, una solución más óptima consiste en crear una copia de la secuencia $a$, ordenarla y aplicar subsecuencia común más larga sobre $a$ y $a_ordenada$, esto nos da una complejidad cercana a $2*n^2$, otra solución un poco más optima se consigue aplicando dp directamente sobre $a$ sin necesidad de crear una copia. 
+\\\imagen{minipageSize=1\linewidth,height=7cm,caption=ejemploLIS.png}{capitulo-006-programacionDinamica/imagenes/ejemploLIS.png}
+\\Si consideramos $LIS(i)$ como la solución de la secuencia desde el indice $0$ hasta $i$ usando el elemento $i$ $LIS(i)=LIS(a[0:i])$, teniendo esto podemos calcular $LIS(i+1)$ de la siguiente forma:
+\\$LIS(0) = 1$, si únicamente tenemos un elemento ese sera la subsecuencia creciente más larga.
+\\$LIS(i+1) = max(LIS(j)+1), \forall j \in [0..i] si a[j]<a[i+1]$
+\\$LIS(i+1) = 1, \forall j \in [0..i]$ si $a[j]>a[i+1]$
+Esto quiere decir que si queremos incluir el elemento $a[i]$ en la solución, este debe ser el mayor de la subsecuencia ya que va al final. Hagamos paso a paso $LIS(4)$:
+\\como $a[0] < a[4] -> LIS(4)_0 = LIS(1) + a[4] = [-7,3]$
+\\como $a[1] > a[4] -> LIS(4)_1 = a[4] = [3]$
+\\como $a[2] > a[4] -> LIS(4)_2 = a[4] = [3]$
+\\como $a[3] < a[4] -> LIS(4)_3 = LIS(3) + a[4] = [-7,2,3]$
+\\Ahora solo elegimos de todas las opciones la más larga, en este caso $LIS(4)_3$, del mismo modo podemos calcular $LIS(i+2)$,$LIS(i+3)$... 
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=LIS.cpp]
+int memorizacion[100];
+int LIS(int i){
+    if(i==0)return 1;
+    if(memorizacion[i]!=0)return memorizacion[i];
+    int maximo = 1;
+    for(int j=0;j<i;j++){
+        if(a[j]<a[i]){
+            maximo = max(maximo,LIS(j)+1);
+        }
+    }
+    memorizacion[i] = maximo;
+    return memorizacion[i];
+}
+\end{lstlisting}
+\end{minipage}
+Para efectos de la demostración describi la formula recursiva con $i+1$, pero en el codigo en realidad la use de la siguiente manera:
+\\$LIS(0) = 1$, si únicamente tenemos un elemento ese sera la subsecuencia creciente más larga.
+\\$LIS(i) = max(LIS(j)+1), \forall j \in [0..i-1] si a[j]<a[i+1]$
+\\$LIS(i) = 1, \forall j \in [0..i-1]$ si $a[j]>a[i+1]$
+esta implementación tiene una complejidad de $O(n^2)$, existe una solución a este problema de complejidad $O(n*log(k))$ siendo $k$ la cantidad de elementos de $a$, que es una mejora de esta, la diferencia consiste en que no se recorre de $0...j$ si no que cada que se mantiene un arreglo ordenado con las soluciones de $LIS(0),LIS(1)...LIS(j)$ y a la hora de revizarlos, se hace una busqueda binaria buscando el último elemento en el arreglo $l$ tal que sea menor que $a[j]$. En el repositorio de luisfcofv se pueden encontrar los códigos del libro Competitive Programming, dentro se encuentra la solución optimizada y que reconstruye todo el LIS, en esta url \url{https://github.com/luisfcofv/competitive-programming-book/blob/master/ch3/ch3_06_LIS.cpp/}.

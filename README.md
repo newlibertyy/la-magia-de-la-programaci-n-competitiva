@@ -9,7 +9,7 @@ El proyecto esta hecho en latex, si no sabes latex y quieres contribuir no te pr
 # ¿Cómo participar?
 
 Puedes participar incluyendo nuevos temas colaborando con corrección de ortografía o estilo.
-Haces un fork del repositorio haces tus modificaciones y no las enviás por un pull request nosotros te diremos si fue aprobado o lo que te falta para que sea aprobado en el repositorio principal. 
+Haces un fork del repositorio haces tus modificaciones y no las enviás por un pull request, nosotros te diremos si fue aprobado o lo que te falta para que sea aprobado en el repositorio principal. 
 
 # Inclusión de temas:
 

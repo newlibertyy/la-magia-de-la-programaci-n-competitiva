@@ -18,7 +18,7 @@ No es la intención de este libro dar una explicación detallada de lo que es la
 \section{Estructuras de datos lineales}
 
 Una estructura de datos es considerada lineal si todos sus elementos estan organizados en linea, por ejemplo en un arreglo de izquierda a derecha.
-\\En la mayoria de lenguajes de programación podemos distinguir entre arreglos estaticos y arreglos dinamicos, a los arreglos estaticos les definimos un tamaño y es inalterable, su ventaja es que acceder a un elemento conociendo su indice es instantaneo, por ejemplo
+\\En la mayoria de lenguajes de programación podemos distinguir entre arreglos estaticos y arreglos dinamicos, a los arreglos estaticos les definimos un tamaño y es inalterable. 
 \\\begin{minipage}{\textwidth}
 \begin{lstlisting}[style=C,caption=arregloEstatico.cpp]
 int main(){
@@ -27,7 +27,9 @@ int main(){
 }
 \end{lstlisting}
 \end{minipage}
-\\Los arreglos comienzan con el indice 0 ciendo palabras[0] = ``hola", palabras[1] = ``adios"{} y palabras[2]=``tres". Los arreglos estaticos son muy utiles cuando sabemos exactamente el tamaño de elementos que usaremos, su complejidad en las diferentes operaciones es:
+\\Los arreglos comienzan con el indice 0 siendo palabras[0] = ``hola", palabras[1] = ``adios"{} y palabras[2]=``tres".
+\subsection{Arreglos dinámicos}
+Los arreglos estaticos son muy utiles cuando sabemos exactamente el tamaño de elementos que usaremos, su complejidad en las diferentes operaciones es:
 \begin{itemize}
     \item Insertar/Actualizar $O(1)$ si conocemos la casilla donde insertaremos o actualizaremos, si no $O(n)$
     \item Buscar   $O(1)$ (cuando conocemos el indice), si no $O(n)$
@@ -49,14 +51,15 @@ int main(){
 }
 \end{lstlisting}
 \end{minipage}
-\\Los arreglos dinamicos son iguales a los estaticos, excepto por que pueden agrandarse todo lo que quieran (que lo soporte la RAM), otra gran diferencia es que ya trae por defecto la implementación de inserción y eliminación, esta estructura no permite huecos, por lo que su complejidad es la siguiente:
+\subsection{Arreglos esáticos}
+Los arreglos dinamicos son iguales a los estaticos, excepto por que pueden agrandarse todo lo que quieran (siempre que lo soporte la RAM), otra gran diferencia es que ya traen por defecto la implementación de inserción y eliminación, esta estructura no permite huecos, por lo que su complejidad es la siguiente:
 \begin{itemize}
     \item Insertar $O(1)$
     \item Buscar   $O(1)$ (cuando conocemos el indice), si no $O(n)$
     \item Borrar   $O(n)$ 
     \item actualizar $O(1)$ (cuando conocemos el indice), si no $O(n)$
 \end{itemize}
-Como podemos observar, sus complejidades son muy efectivas, y por eso son muy usadas en la mayoria de las ocasiones, de hecho casi cualquier problema que requiera estructura de datos se puede solucionar aplicando esta estructura, solo que obviamente no siempre es la solución optima. Supongamos una base de datos que solo usara arreglos, seria muy lenta y poco práctica.
+Como podemos observar, sus complejidades son muy efectivas, y por eso son muy usadas en la mayoria de las ocasiones, de hecho casi cualquier problema que requiera estructura de datos se puede solucionar aplicando esta estructura, solo que obviamente no siempre es la solución óptima. Supongamos una base de datos que solo usara arreglos, seria muy lenta y poco práctica.
 Un ejemplo de uso de arreglo dinámico es el siguiente:
 \\\begin{minipage}{\textwidth}
 \begin{lstlisting}[style=C,caption=arregloDinamicoAmigos.cpp]
@@ -83,7 +86,8 @@ int main(){
 }
 \end{lstlisting}
 \end{minipage}
-Generalmente la unica manera de conocer el indice del elemento que estamos buscando, es que queramos recorrer el arreglo, como lo hemos hecho en los ejemplos. Asi que en la mayoria de ocasiones cuando buscamos un elemento y no estamos recorriendo el arreglo la complejidad es de $O(n)$, pero podemos mejorar esto, ordenando el arreglo. Como en el ejemplo de la biblioteca tener la información ordenada nos permite encontrar las cosas más rapidamente, pero sacrificamos otras cosas a cambio. Como ya lo mencionamos en estructuras de datos no hay nada perfecto para todo, tenemos dos opciones. La primera es ordenar el arreglo antes de hacer la consulta, la otra es siempre tenerlo ordenado.
-Ordenar un arreglo no es una tarea fácil, por suerte la mayoria de lenguajes de programación nos provee herramientas para hacer esto, los mejores algoritmos de ordenamiento genericos tienen una complejidad de $O(n\log{}n)$, y buscar un elemento en un arreglo ordenado nos toma $O(\log{}n)$ por medio de busqueda binaria, la busqueda binaria funciona parandonos en la mitad, decidiendo si el elemento que buscamos se encuentra hacia la derecha o hacia la izquierda (lo sabemos por que estan ordenados) y repitiendo el proceso. 
-Es ineficiente ordenar un arreglo para hacer una única búsqueda, pero se vuelve efectivo a partir de una cantidad, vamos a calcular en que momento se vuelve efectivo:
-$S$ busquedas en un arreglo desordenado tiene una complejidad de $O(S\times{}n)$ y $S$ busquedas en un arreglo ordenado tiene una complejidad de $O(n\log{}n + S\log{}n)$. Si igualamos y despejamos $S$, obtenemos $S =\frac{nlog(n)}{n-log(n)}$ por lo tanto si nuestra cantidad de busquedas es mayor a $S$, vale la pena ordenar el arreglo antes de realizarlas.
+Generalmente la unica manera de conocer el indice del elemento que estamos buscando, es que queramos recorrer el arreglo, como lo hemos hecho en los ejemplos. Asi que en la mayoria de ocasiones cuando buscamos un único elemento la complejidad es de $O(n)$, pero podemos mejorar esto, ordenando el arreglo. Como en el ejemplo de la biblioteca tener la información ordenada nos permite encontrar las cosas más rapidamente, pero sacrificamos otras cosas a cambio. Como ya lo mencionamos en estructuras de datos no hay nada perfecto para todo, tenemos dos opciones. La primera es ordenar el arreglo antes de hacer la consulta, la otra es siempre tenerlo ordenado.
+Ordenar un arreglo no es una tarea fácil, por suerte la mayoria de lenguajes de programación nos provee herramientas para hacer esto, los mejores algoritmos de ordenamiento genericos tienen una complejidad de $O(n\log{}n)$, y buscar un elemento en un arreglo ordenado nos toma $O(\log{}n)$ por medio de busqueda binaria, la busqueda binaria funciona parandonos en la mitad, decidiendo si el elemento que buscamos se encuentra hacia la derecha o hacia la izquierda (lo sabemos por que estan ordenados) y repitiendo el proceso.
+\imagen{minipageSize=1\linewidth,height=3cm,caption=busquedaBinaria.png}{capitulo-005-estructuras/imagenes/busquedaBinaria.png}
+\\Por ejemplo si tenemos un directorio de teléfonos y estamos buscando el número de ``Sofia'', si nos paramos en la mitad del directorio encontraremos quizas las palabras que inician en ``M'', sabemos que el número que buscamos se encuentra hacia la derecha del directorio por que la ``S'' es mayor a la ``M'' asi que de una sola busqueda ya descartamos la mitad de las opciones, luego repetimos el proceso parandonos en la mitad del directorio que nos queda y esta vez nos paramos en la letra ``S'', la palabra ``Sofia'' se encuentra en esta letra asi que nos ahorramos recorrer una por una desde la ``A'' hasta la ``S'' para encontrar la pagina que buscabamos.
+\\Es ineficiente ordenar un arreglo para hacer una única búsqueda, pero se vuelve efectivo a partir de una cantidad, vamos a calcular en que momento se vuelve efectivo: $S$ busquedas en un arreglo desordenado tiene una complejidad de $O(S\times{}n)$ y $S$ busquedas en un arreglo ordenado tiene una complejidad de $O(n\log{}n + S\log{}n)$. Si igualamos y despejamos $S$, obtenemos $S =\frac{nlog(n)}{n-log(n)}$ por lo tanto si nuestra cantidad de busquedas es mayor a $S$, vale la pena ordenar el arreglo antes de realizarlas.

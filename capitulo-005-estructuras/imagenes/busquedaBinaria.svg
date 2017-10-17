@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="230mm"
+   height="50mm"
+   viewBox="0 0 230 50"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="busquedaBinaria.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="118.99414"
+     inkscape:cy="174.34339"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-247)">
+    <g
+       id="g4535"
+       transform="translate(4.2763124,249.0952)">
+      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,15.016142,-3.5642057)"
+         style="font-style:normal;font-weight:normal;font-size:28px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none"
+         id="flowRoot4485"
+         xml:space="preserve"><flowRegion
+           style="font-size:28px;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none"
+           id="flowRegion4487"><rect
+             style="font-size:28px;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none"
+             y="46.805401"
+             x="7.1428552"
+             height="175.71428"
+             width="772.85712"
+             id="rect4489" /></flowRegion><flowPara
+           id="flowPara4491">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</flowPara></flowRoot>      <rect
+         y="8.0129843"
+         x="103.99693"
+         height="8.6585541"
+         width="8.6585522"
+         id="rect4493"
+         style="fill:#0000ff;fill-opacity:0;stroke:#ff7f2a;stroke-width:0.65692246;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers" />
+    </g>
+    <g
+       id="g4542"
+       transform="translate(4.2763124,249.0952)">
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:28px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none"
+         id="flowRoot4485-2"
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,14.386723,16.435794)"><flowRegion
+           style="font-size:28px;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none"
+           id="flowRegion4487-4"><rect
+             style="font-size:28px;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none"
+             y="46.805401"
+             x="7.1428552"
+             height="175.71428"
+             width="772.85712"
+             id="rect4489-0" /></flowRegion><flowPara
+           id="flowPara4491-6">M N O P Q R S T U V W X Y Z</flowPara></flowRoot>      <rect
+         y="28.012985"
+         x="63.577103"
+         height="8.6585541"
+         width="8.6585531"
+         id="rect4493-5"
+         style="fill:#0000ff;fill-opacity:0;stroke:#ff7f2a;stroke-width:0.65692246;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="6.8397079"
+       y="263.96616"
+       id="text4528"><tspan
+         sodipodi:role="line"
+         id="tspan4526"
+         x="6.8397079"
+         y="263.96616"
+         style="stroke-width:0.26458332">1)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="6.8397079"
+       y="283.96616"
+       id="text4528-4"><tspan
+         sodipodi:role="line"
+         id="tspan4526-9"
+         x="6.8397079"
+         y="283.96616"
+         style="stroke-width:0.26458332">2)</tspan></text>
+  </g>
+</svg>

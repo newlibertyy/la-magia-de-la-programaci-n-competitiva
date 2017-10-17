@@ -91,3 +91,120 @@ Ordenar un arreglo no es una tarea fácil, por suerte la mayoria de lenguajes de
 \imagen{minipageSize=1\linewidth,height=3cm,caption=busquedaBinaria.png}{capitulo-005-estructuras/imagenes/busquedaBinaria.png}
 \\Por ejemplo si tenemos un directorio de teléfonos y estamos buscando el número de ``Sofia'', si nos paramos en la mitad del directorio encontraremos quizas las palabras que inician en ``M'', sabemos que el número que buscamos se encuentra hacia la derecha del directorio por que la ``S'' es mayor a la ``M'' asi que de una sola busqueda ya descartamos la mitad de las opciones, luego repetimos el proceso parandonos en la mitad del directorio que nos queda y esta vez nos paramos en la letra ``S'', la palabra ``Sofia'' se encuentra en esta letra asi que nos ahorramos recorrer una por una desde la ``A'' hasta la ``S'' para encontrar la pagina que buscabamos.
 \\Es ineficiente ordenar un arreglo para hacer una única búsqueda, pero se vuelve efectivo a partir de una cantidad, vamos a calcular en que momento se vuelve efectivo: $S$ busquedas en un arreglo desordenado tiene una complejidad de $O(S\times{}n)$ y $S$ busquedas en un arreglo ordenado tiene una complejidad de $O(n\log{}n + S\log{}n)$. Si igualamos y despejamos $S$, obtenemos $S =\frac{nlog(n)}{n-log(n)}$ por lo tanto si nuestra cantidad de busquedas es mayor a $S$, vale la pena ordenar el arreglo antes de realizarlas.
+\\Algunas implementaciones especiales que son las pilas y las colas, estas estructuras no suelen recorrersen, en cambio se usan para ingresar elementos y retirarlos con una complejidad de $O(1)$, comencemos por las colas. Funcionan igual que una cola en un restaurante, las nuevas personas que van llegando se hacen al fondo, y deben esperarsen a que atiendan a todas las que habian llegado antes que ella. Al contrario las pilas funcionan al revés, imaginemos una pila de platos, se van lavando los que estan más arriba y el ultimo que se lava es el de más abajo, si llega un nuevo plato se pone en la cima y se lava de primero.
+\\\imagen{minipageSize=0.5\linewidth,height=6cm,caption=cola.png}{capitulo-005-estructuras/imagenes/cola.png}
+\imagen{minipageSize=0.5\linewidth,height=6cm,caption=pila.png}{capitulo-005-estructuras/imagenes/pila.png}
+Estos códigos de uso de colas y pilas fueron tomados de cplusplus y se pueden encontrar en esta url \url{http://www.cplusplus.com/reference/}.
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=cola.cpp]
+int main(){
+    queue<int> myqueue;
+    int myint;
+    cout << "Please enter some integers (enter 0 to end):\n";
+    do {
+        cin >> myint;
+        myqueue.push (myint);
+    } while (myint);
+    cout << "myqueue contains: ";
+    while (!myqueue.empty())
+    {
+        cout << ' ' << myqueue.front();
+        myqueue.pop();
+    }
+    cout << '\n';
+    return 0;
+}
+
+\end{lstlisting}
+\end{minipage}
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=pila.cpp]
+int main(){
+    std::stack<int> mystack;
+
+    for (int i=0; i<5; ++i) mystack.push(i);
+
+    std::cout << "Popping out elements...";
+    while (!mystack.empty())
+    {
+        std::cout << ' ' << mystack.top();
+        mystack.pop();
+    }
+    std::cout << '\n';
+
+    return 0;
+}
+\end{lstlisting}
+\end{minipage}
+
+\section{Estructuras de datos no lineales}
+
+A veces las estructuras de datos lineales no son lo suficientemente eficientes para el enfoque de nuestro problema, para estos casos es probable que requiramos una estructura de datos no lineales.
+\subsection{Árbol binario balanceado}
+Un árbol binario balanceado es aquel que la altura de los hijos de cualquier nodo difieren en maximo 1. Los conjuntos y los mapas son codificados con esta estructura, entenderla y programarla es algo tedioso, pero los principales lenguajes de programación ya la traen implementada por defecto, si deseas conocer más acerca de esta estructura puedes consultarla por su nombre en español o la documentación en ingles como ``Balanced Binary Search Tree'', con una complejidad en todas sus operaciones de $O(log(n))$
+\subsection{Conjuntos}
+Los conjuntos son muy útiles cuando se quiere preguntar si un elemento existe en el conjunto, si usaramos una estructura lineal nos tomaria $O(n)$ saber si el elemento existe. Si se intenta insertar un elemento repetido no pasa nada.
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=conjunto.cpp]
+int main(){
+    set<string> palabrasFavoritas;
+    string palabra;
+    cout<<"inserte una palabra a tus favoritas, escriba 0 para terminar"<<endl;
+    cin>>palabra;
+    while(palabra!="0"){
+        palabrasFavoritas.insert(palabra);
+        cout<<"inserte una palabra a tus favoritas, escriba 0 para terminar"<<endl;
+        cin>>palabra;
+    }
+    cout<<"pregunte por una palabra para saber si esta entre tus favoritas, escriba 0 para terminar"<<endl;
+    string pregunta;
+    cin>>pregunta;
+    while(pregunta!="0"){
+        if(palabrasFavoritas.count(pregunta)){
+            cout<<"esta entre las favoritas"<<endl;
+        }else{
+            cout<<"no esta entre las favoritas"<<endl;
+        }
+        cout<<"pregunte por una palabra para saber si esta entre tus favoritas, escriba 0 para terminar"<<endl;
+        cin>>pregunta;
+    }
+}
+\end{lstlisting}
+\end{minipage}
+Existen otras aplicaciones para los conjuntos, ya que la información en estos esta siempre ordenada, se puede simular una estructura lineal con complejidad $O(log(n))$ en todas sus operaciones, recuerdan la comparación que hicimos antes sobre $S$ busquedas ordenando un arreglo, al tener esta otra manera de ordenar la información se vuelve aun mas complicado decidir que estructura de datos nos conviene más, pero como norma general seria asi:
+\\\begin{itemize}
+\item Si suelen hacersen muchas operaciones de insersión y casi ninguna de busqueda conviene más un arreglo dinámico sin ordenar nunca.
+\item Si suelen hacersen muchas operaciones de insersión, seguidas de muchas busquedas conviene más un arreglo dinámico ordenandolo antes de iniciar la serie de busquedas.
+\item Si suelen hacerse operaciones de insersión y de busquedas uniformemente, conviene más un conjunto.
+\end{itemize}
+Este es un claro ejemplo de por que conocer las distintas estructuras de datos nos permite optimizar nuestra solución.
+\subsection{Mapas}
+Los mapas son similares a los conjuntos, la única diferencia es que permiten guardar una relación entre clave$->$valor, la clave suele ser un string o un entero, pero dependiendo del lenguaje de programación puede ser de cualquier tipo de dato sobreescribiendo el operador menor que $<$, el valor puede ser cualquier tipo de dato sin ningún impedimento.
+Por ejemplo si deseamos tener una registro con todos los animales y la cantidad que hemos encontrado de estos, constantemente iremos descubriendo nuevos animales y repitiendo los que ya habiamos encontrado. Si aplicamos las estructuras de datos que conociamos tendriamos que usar un arreglo dinámico con objetos que contengan el nombre del animal y la cantidad. Pero con el mapa simplemente podemos dar como clave el nombre del animal y como valor la cantidad, asi todas las operaciones tendrian complejidad de $log(n)$. Al igual que en el ejemplo de los sets, hay situaciones donde conviene más el uso de una lista, o una lista y ordenara antes que usar mapa, pero en la mayoria de aplicaciones las insersiones y busquedas tienen un comportamiento uniforme asi que conviene más el uso de mapas en la mayoria de casos.
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=conjunto.cpp]
+int main(){
+    set<string> palabrasFavoritas;
+    string palabra;
+    cout<<"inserte una palabra a tus favoritas, escriba 0 para terminar"<<endl;
+    cin>>palabra;
+    while(palabra!="0"){
+        palabrasFavoritas.insert(palabra);
+        cout<<"inserte una palabra a tus favoritas, escriba 0 para terminar"<<endl;
+        cin>>palabra;
+    }
+    cout<<"pregunte por una palabra para saber si esta entre tus favoritas, escriba 0 para terminar"<<endl;
+    string pregunta;
+    cin>>pregunta;
+    while(pregunta!="0"){
+        if(palabrasFavoritas.count(pregunta)){
+            cout<<"esta entre las favoritas"<<endl;
+        }else{
+            cout<<"no esta entre las favoritas"<<endl;
+        }
+        cout<<"pregunte por una palabra para saber si esta entre tus favoritas, escriba 0 para terminar"<<endl;
+        cin>>pregunta;
+    }
+}
+\end{lstlisting}
+\end{minipage}

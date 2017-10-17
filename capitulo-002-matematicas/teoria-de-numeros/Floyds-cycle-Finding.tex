@@ -1,17 +1,17 @@
 \subsection{Floyd’s Cycle-Finding}
-Es una técnica para detectar un ciclo dentro de una secuencia creada con un función f(x) de la forma g(x)mod M
+Es una técnica para detectar un ciclo dentro de una secuencia creada con un función $f(x)$de la forma g(x)mod M
 donde el primer valor se da y el resto de elementos  se generaría de esta manera{x0, x1=f(x0), x2=f(x1),  …},
-si tenemos la función f(x)=3x+5 mod 12 con x0=3 tendríamos {3, 2,11,2,11,2} Nuestro objetivo es encontrar 2 valores
+si tenemos la función $f(x)=3x+5 mod 12$ con $x_0=3$ tendríamos ${3, 2,11,2,11,2}$ Nuestro objetivo es encontrar 2 valores
 \\$mu = $cantidad de numeros que hay antes de que inicie el ciclo
 \\$lambda = $cantidad de elementos que tiene el ciclo
 \\En este caso mu es 1 y lambda es 2
 \\El algoritmo de detección de ciclo se hace con la analogía de la liebre y la tortuga y tiene 3 pasos
 \subsubsection{primer paso:}
-iniciamos la  tortuga en f(x0) y la libre en f(f(x0)) la libre se mueve 2 veces avanzamos la tortuga f(tortuga) y la libre f(f(liebre)) hasta que los 2 punteros coincidan
+iniciamos la  tortuga en $f(x_0)$ y la libre en $(f(x_0))$ la libre se mueve 2 veces avanzamos la tortuga $f(tortuga)$ y la libre $f(f(liebre))$ hasta que los 2 punteros coincidan
 \subsubsection{paso 2:}
-iniciamos mu=0 hacemos la liebre igual a nuestro inicio y empezamos iterar los 2 punteros paso a paso sumando le 1 a mu hasta que coincidan.
+iniciamos $mu=0$ hacemos la liebre igual a nuestro inicio y empezamos iterar los 2 punteros paso a paso sumando le 1 a mu hasta que coincidan.
 \subsubsection{paso 3:}
-estando los dos punteros en el mismo lugar iniciamos lambda=1 y libre=f(liebre)
+estando los dos punteros en el mismo lugar iniciamos $lambda=1$ y $libre=f(liebre)$
 e iteramos solo con la liebre hasta que vuelva a coincidir con la tortuga sumándole 1 a lambda por cada iteración.
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[style=C,caption=floydCycleFinding.cpp]

@@ -1,0 +1,30 @@
+\subsection{Introducción}
+La potenciación rápida es un algoritmo para calcular la potencia enésima de cualquier estructura donde este definida la multiplicación y el algoritmo es el siguiente:
+\begin{itemize}
+\item hacemos el resultado igual a la unidad, si es impar multiplicamos el resultado por nuestra base  osea $resultado = resultado * base$
+\item sin importar si es impar o no hacemos la $base =  base x base$
+\item hacemos la división entera de nuestro numero  potencia por 2 $potencia=potencia/2$  y seguimos así hasta que el  número al cual estamos elevando sea 0, estamos utilizando la propiedad de la potenciación que dice $\left ( 2^{n} \right )^m=2^{mn}$
+\end{itemize}
+
+\subsubsection{Ejemplo con un números enteros:}
+
+$2^{7} = 2* \left ( 2^{2}\right )^{3}$
+\\$2^{7} = 2*2^{2} *\left (2^{4} \right )^{1}$
+
+\subsubsection{Algoritmo general}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=operadorPotencia]
+Estructura operator^(const int& n) const
+{
+    Extructurra resultado(), base = *this;
+    int potencia = n;
+    while (potencia) {
+        if (potencia & 1)//comprueba si pontencia es impar
+            resultado = resultado * base;
+        potencia = potencia >> 1; //es lo mismo que potencia=potenncia/2;
+        base = base * base;
+    }
+    return resultado;
+}
+\end{lstlisting}
+\end{minipage}

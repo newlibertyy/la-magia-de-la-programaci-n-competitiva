@@ -1,9 +1,10 @@
 \subsection{Introducción}
 La potenciación rápida es un algoritmo para calcular la potencia enésima de cualquier estructura donde este definida la multiplicación y el algoritmo es el siguiente:
+\\\\mientras exponente sea diferente de 0 se repiten los siguientes pasos
 \begin{itemize}
 \item hacemos el resultado igual a la unidad, si el exponente es impar multiplicamos el resultado por nuestra base  osea $resultado = resultado * base$
 \item hacemos la $base =  base * base$
-\item tomamos la parte entera de dividir nuestro exponente por 2 $exponente=exponente/2$  y seguimos así hasta que nuestro exponente sea 0, estamos utilizando la propiedad de la potenciación que dice $\left ( 2^{n} \right )^m=2^{mn}$
+\item tomamos la parte entera de dividir nuestro exponente por 2 $exponente=exponente/2$, estamos utilizando la propiedad de la potenciación que dice $\left ( 2^{n} \right )^m=2^{mn}$
 \end{itemize}
 
 \subsubsection{Ejemplo con un números enteros:}

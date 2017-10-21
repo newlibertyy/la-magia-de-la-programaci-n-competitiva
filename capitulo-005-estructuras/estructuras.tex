@@ -208,3 +208,67 @@ int main(){
 }
 \end{lstlisting}
 \end{minipage}
+\\\subsection{Conjuntos disjuntos}
+Conocida en ingles como (Union-Find Disjoint Sets) es una estructura optimizada para tener varios conjuntos y poder 	ejecutar algunas operaciones casi en tiempo lineal $\approx O(1)$, en realidad la complejidad de $M$ operaciones en esta estructura tiene una complejidad de $M*\alpha(n)$ donde $n$ es la cantidad de elementos en todos los conjuntos, y $\alpha(n)$ es la función inversa de ackerman, la función de ackerman crece muy rapido y como efecto su función inversa crece excecivamente lento. Por esto se puede considerar $\alpha(n)$ como una constante y las $M$ operaciones contarian con una complejidad $\approx O(M)$.
+\\Las operaciones son:
+\\\begin{itemize}
+\item $Consultar(elemento)$: retorna el conjunto al que pertenece $elemento$.
+\item $Evaluar(elemento1,elemento2)$: evalua si $elemento1$ esta en el mismo conjunto que $elemento2$.
+\item $Unir(elemento1,elemento2)$: une el conjunto que contiene a $elemento1$ con el conjunto de $elemento2$.
+\end{itemize}
+Para lograr esta eficiencia, esta estructura reune todos los elementos en un árbol, de manera que el ancestro del arbol es el conjunto al que pertenecen, cuando un elemento $e_1$ se encuentra por debajo del segundo nivel del árbol (siendo el primer nivel el ancestro y el segundo nivel sus hijos directos), y se ejecuta $Consultar(e_1)$ esto tomara algunas ejecuciones hasta encontrar su ancestro, pero recursivamente iremos estableciendo al ancestro como padre directo del elemento $e_1$ y de todos sus padres.
+\\\imagen{minipageSize=1\linewidth,height=13cm,caption=conjuntosDisjuntosConsultar.png}{capitulo-005-estructuras/imagenes/conjuntosDisjuntosConsultar.png}
+Si queremos unir los conjuntos de dos elementos $elemento1$ y $elemento2$, lo único que debemos hacer es consultar el ancestro de ambos elementos: $Consultar(elemento1)$ y $Consultar(elemento2)$, si son distintos (pertenecen a diferente conjunto) asignamos a uno de los dos ancestros como padre del otro.
+\\\imagen{minipageSize=1\linewidth,height=13cm,caption=conjuntosDisjuntosUnir.png}{capitulo-005-estructuras/imagenes/conjuntosDisjuntosUnir.png}
+Para evaluar si dos elementos pertenecen al mismo conjunto unicamente debemos comparar los resultados entre $Consultar(elemento1)$ y $consultar(elemento2)$.
+\\Podemos observar que el metodo $consultar$ actualiza el árbol cada que se ejecuta haciendo que el elemento y sus padres esten a solo un nodo de distancia del ancestro, y tanto $Evaluar$, como $Unir$ hacen uso de $Consultar$, es por eso que conforme se van haciendo ejecuciones, el arbol va manteniendo su tamaño reducido y sus operaciones tienden a ser $O(1)$.
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=unionFind.cpp]
+#include <bits/stdc++.h>
+using namespace std;
+
+//1000 es el limite de elementos, puede modificarse
+vector<int> pset(1000); //padre del elemento i
+void inicializarConjuntos(int N) {
+    pset.assign(N, 0);
+    for (int i = 0; i < N; i++){
+        pset[i] = i;
+    }
+}
+int consultar(int i) {
+    if(pset[i]==i){
+        return i; //si ya es el ancestro lo retorna.
+    }else{
+        pset[i] = consultar(pset[i]); //si no es el ancestro, hace que su papa sea su ancestro y lo retorna
+        return pset[i];
+    }
+}
+bool evaluar(int i, int j) {
+    return consultar(i) == consultar(j); //si tienen el mismo ancestro retorna true, si no false.
+}
+
+void unionSet(int i, int j) {
+    if (!evaluar(i, j)) { //si no son el mismo conjunto, consulta el ancestro de i y de j, luego hace que el padre del ancestro de i sea el ancestro de j
+        pset[consultar(i)] = consultar(j);
+    }
+}
+
+int main() {
+  printf("asumimos 5 elementos en 5 conjuntos diferentes al empezar\n");
+  inicializarConjuntos(5); // create 5 disjoint sets
+  unionSet(0, 1);
+  unionSet(0, 2);
+  unionSet(3, 1);
+  printf("consultar(A) = %d\n", consultar(0));
+  printf("consultar(B) = %d\n", consultar(1));
+  printf("consultar(C) = %d\n", consultar(2));
+  printf("consultar(D) = %d\n", consultar(3));
+  printf("consultar(E) = %d\n", consultar(4));
+  printf("evaluar(A, E) = %d\n", evaluar(0, 4));
+  printf("evaluar(A, B) = %d\n", evaluar(0, 1));
+
+  return 0;
+}
+\end{lstlisting}
+\end{minipage}
+\\Este código fue tomado y modificado de \cite{disjointSet:Online}. Todo el capítulo fue inspirado en \cite{CompetitiveProgramming3}.

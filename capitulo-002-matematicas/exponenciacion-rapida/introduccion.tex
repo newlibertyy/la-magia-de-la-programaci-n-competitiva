@@ -1,15 +1,33 @@
 \subsection{Introducción}
 La potenciación rápida es un algoritmo para calcular la potencia enésima de cualquier estructura donde este definida la multiplicación y el algoritmo es el siguiente:
 \begin{itemize}
-\item hacemos el resultado igual a la unidad, si es impar multiplicamos el resultado por nuestra base  osea $resultado = resultado * base$
-\item sin importar si es impar o no hacemos la $base =  base * base$
-\item hacemos la división entera de nuestro numero  potencia por 2 $potencia=potencia/2$  y seguimos así hasta que el  número al cual estamos elevando sea 0, estamos utilizando la propiedad de la potenciación que dice $\left ( 2^{n} \right )^m=2^{mn}$
+\item hacemos el resultado igual a la unidad, si el exponente es impar multiplicamos el resultado por nuestra base  osea $resultado = resultado * base$
+\item hacemos la $base =  base * base$
+\item tomamos la parte entera de dividir nuestro exponente por 2 $exponente=exponente/2$  y seguimos así hasta que nuestro exponente sea 0, estamos utilizando la propiedad de la potenciación que dice $\left ( 2^{n} \right )^m=2^{mn}$
 \end{itemize}
 
 \subsubsection{Ejemplo con un números enteros:}
 
-$2^{7} = 2* \left ( 2^{2}\right )^{3}$
-\\$2^{7} = 2*2^{2} *\left (2^{4} \right )^{1}$
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+resultado & base & exponente \\
+\hline \hline
+1 &	2 &	13 \\ \hline
+2 &	4 &	6 \\ \hline
+2	& 16 & 3 \\ \hline
+32 &	256 &	1 \\ \hline
+8192 &	65536 &	0 \\ \hline
+\end{tabular}
+\caption{potenciacion rápida con números enteros.}
+\label{tabla:ejemplo}
+\end{center}
+\end{table}
+$2^{13}=2*\left ( 2^{2} \right )^{6}$
+\\$2^{13}=2*\left ( 2^{4} \right )^3$
+\\$2^{13}=2*2^{4}\left ( 2^{8} \right )^1$
+
 
 \subsubsection{Algoritmo general}
 \begin{minipage}{\textwidth}
@@ -17,11 +35,11 @@ $2^{7} = 2* \left ( 2^{2}\right )^{3}$
 Estructura operator^(const int& n) const
 {
     Extructurra resultado(), base = *this;
-    int potencia = n;
-    while (potencia) {
-        if (potencia & 1)//comprueba si pontencia es impar
+    int exponente = n;
+    while (exponente) {
+        if (exponente & 1)//comprueba si exponente es impar
             resultado = resultado * base;
-        potencia = potencia >> 1; //es lo mismo que potencia=potenncia/2;
+        exponente = exponente >> 1; //es lo mismo que exponente=exponente/2;
         base = base * base;
     }
     return resultado;

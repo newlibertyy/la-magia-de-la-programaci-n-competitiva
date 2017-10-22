@@ -1,4 +1,4 @@
-\chapter{recursividad}
+\chapter{Recursividad}
 \section{Descripción y Motivación}
 
 Existen problemas que para resolverlos tenemos que ejecutar el mismo bloque de instrucciones
@@ -12,7 +12,7 @@ Supongamos que debemos resolver el problema de sumar los primeros n numeros, dos
 solucionan este problema son los siguientes:
 
 \begin{minipage}{\textwidth}
-Iterativo 
+Iterativo
 \begin{lstlisting}[style=C,caption=sumaIterativa.cpp]
 int sumaIterativa(int n){
     int resultado = 0;
@@ -59,8 +59,8 @@ int sumaRecursiva(int actual, int n){
 }
 \end{lstlisting}
 \end{minipage}
-El caso base esta muy ligado a la manera en que hacemos la recursividad, por lo general la 
-recursividad se hace disminuyendo los parametros del problema, pero no siempre es asi como 
+El caso base esta muy ligado a la manera en que hacemos la recursividad, por lo general la
+recursividad se hace disminuyendo los parametros del problema, pero no siempre es asi como
 vimos en el segundo ejemplo, al igual que podemos hacer algoritmos iterativos con el contador
 ascendente o descendente y tenemos que generar la condicion de detener en base a este, en la
 recursividad también lo hacemos asi.
@@ -76,8 +76,8 @@ de $n$ es $n * factorial de (n-1)$, y la solución de $factorial de (n-1) es (n-
 \\$f(3) = 3*f(2) = 3*2 = 6$
 \\$f(4) = 4*f(3) = 4*6 = 24$
 \\$f(5) = 5*f(4) = 5*12 = 120$
-\\Mas o menos de esa manera funciona la recursividad en código, se van guardando cada llamada al 
-metodo en una cola, al retornar regresa al metodo que la llamo. asi 
+\\Mas o menos de esa manera funciona la recursividad en código, se van guardando cada llamada al
+metodo en una cola, al retornar regresa al metodo que la llamo. asi
 \\$f(5)->f(4)->f(3)->f(2)->f(1)$
 \\\begin{minipage}{\textwidth}
 Iterativo
@@ -117,9 +117,9 @@ con el algoritmo de fibbonacci. su formula recursiva es $f(n) = f(n-1) + f(n-2)$
 \section{Ejemplos}
 
 Ya vimos uno de los ejemplos mas tipicos de recursividad, el del factorial, en esta sección veremos
-el algoritmo de fibonacci, el algoritmo de Euclides (para hallar el máximo común divisor) y 
+el algoritmo de fibonacci, el algoritmo de Euclides (para hallar el máximo común divisor) y
 un algoritmo para solucionar las torres de hanoi.
-\\Empecemos por el algoritmo de fibonacci, por definición la suseción de fibonacci comienza de la 
+\\Empecemos por el algoritmo de fibonacci, por definición la suseción de fibonacci comienza de la
 siguiente forma : 0,1,1,2,3,5,8 ... , cada elemento es la suma de sus dos anteriores. Más  formalmente:
 
 $f(n) = f(n-1) + f(n-2)$

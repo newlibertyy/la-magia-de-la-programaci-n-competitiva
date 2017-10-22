@@ -1,8 +1,8 @@
-\subsection{número de desarreglos}
-el numero de desarreglos es el numero de permutaciones que podemos hacer donde ninguno de los elementos esta en su posición inicial, se calculan con la siguiente formula recursiva.\\
+\subsection{Número de desarreglos}
+El numero de desarreglos es el numero de permutaciones que podemos hacer donde ninguno de los elementos esta en su posición inicial, se calculan con la siguiente formula recursiva.\\
 $D_{n}=(n-1)(D_{n-1}+D_{n-2})$\\
 casos base:
 $D_{2}=1$ $D_{3}=2$
-\subsection{número de permutaciones de n elementos que dejan exactamente k elementos fijos}
-el numero de permutaciones que dejan exactamente k elementos fijos es lo mismo que tachar k elementos y hacer un desarreglo con los n-k restantes. entonces la formula seria el numero de formas que podemos escoger k elementos del total multiplicado el desarreglo de n-k, siendo $s(n,k)$ el numero de arreglos con exactamente k elementos fijos tenemos:\\
+\subsection{Número de permutaciones de n elementos que dejan exactamente k elementos fijos}
+El numero de permutaciones que dejan exactamente k elementos fijos es lo mismo que tachar k elementos y hacer un desarreglo con los n-k restantes. entonces la formula seria el numero de formas que podemos escoger k elementos del total multiplicado el desarreglo de n-k, siendo $s(n,k)$ el numero de arreglos con exactamente k elementos fijos tenemos:\\
 $s(n,k)=c(n,k)D_{n-k}$

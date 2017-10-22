@@ -1,5 +1,5 @@
-\subsection{puntos}
-\subsubsection{punto de enteros}
+\subsection{Puntos}
+\subsubsection{Punto de enteros}
 \begin{lstlisting}[style=C]
 // struct point_i { int x, y; };
 // basic raw form, minimalist mode
@@ -10,7 +10,7 @@ point_i() { x = y = 0; }
 point_i(int _x, int _y) : x(_x), y(_y) {} };
 // user-defined
 \end{lstlisting}
-\subsubsection{punto de reales}
+\subsubsection{Punto de reales}
 \begin{lstlisting}[style=C]
 struct point { double x, y;
 // only used if more precision is needed
@@ -35,7 +35,7 @@ return y < other.y; } };
 sort(P.begin(), P.end());
 // comparison operator is defined above
 \end{lstlisting}
-\subsubsection{saber si dos puntos son iguales}
+\subsubsection{Saber si dos puntos son iguales}
 \begin{lstlisting}[style=C]
 struct point { double x, y;
 point() { x = y = 0.0; }
@@ -44,7 +44,7 @@ point(double _x, double _y) : x(_x), y(_y) {}
 bool operator == (point other) const {
 return (fabs(x - other.x) < EPS && (fabs(y - other.y) < EPS)); } };
 \end{lstlisting}
-\subsubsection{distancia euclídea entre 2 puntos}
+\subsubsection{Distancia euclídea entre 2 puntos}
 \begin{lstlisting}[style=C]
 double dist(point p1, point p2) {
 // Euclidean distance
@@ -52,7 +52,7 @@ double dist(point p1, point p2) {
 return hypot(p1.x - p2.x, p1.y - p2.y); }
 // return double
 \end{lstlisting}
-\subsubsection{rotar un punto con respecto al origen}
+\subsubsection{Rotar un punto con respecto al origen}
 \begin{lstlisting}[style=C]
 // rotate p by theta degrees CCW w.r.t origin (0, 0)
 point rotate(point p, double theta) {

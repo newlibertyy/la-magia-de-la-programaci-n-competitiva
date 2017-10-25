@@ -1,0 +1,45 @@
+\subsection{vectores}
+Un vector es un segmento de linea que tiene magnitud y dirección, los vectores son representados parecido a como se
+representa un punto con dos coordenadas $x, y$ donde con eso ya tenemos la magnitud y dirección del vector en posición estándar.
+\begin{lstlisting}[style=C]
+struct vec { double x, y;
+vec(double _x, double _y) : x(_x), y(_y) {} };
+\end{lstlisting}
+Si tenemos un vector que no esta en posición estándar tenemos 2 puntos $cola$ y $cabeza$ donde para trasformarlo a posición estándar
+solo tenemos que restar la cola con la cabeza.
+\begin{lstlisting}[style=C]
+vec vecAEstandar(punto cola, punto cabeza) {
+return vec(cabeza.x - cola.x, cabez.y - cola.y); }
+\end{lstlisting}
+\subsubsection{Operaciones con vectores}
+\begin{itemize}
+  \item Escalar
+  \\
+  Es tener un vector con una magnitud igual a la que tenia multiplicado por un numero real positivo s con la misma dirección.
+  \begin{lstlisting}[style=C]
+  vec escalar(vec v, double s) {
+    return vec(v.x * s, v.y * s);
+  }
+  \end{lstlisting}
+  \item Cuadrado de la magnitud
+  \\
+  Como un vector es un segmento de linea su magnitud se puede hallar con la formula de la distancia euclídea, si
+  no sacamos la raíz tenemos la magnitud al cuadrado
+  \begin{lstlisting}[style=C]
+  double cuadradoMagnitud(vec v) { return v.x * v.x + v.y * v.y; }
+  \end{lstlisting}
+  \item Producto punto
+  \\
+  El producto punto es una operación entre vectores donde el resultado es un escalar
+  \begin{lstlisting}[style=C]
+  double ProductoPunto(vec a, vec b) { return (a.x * b.x + a.y * b.y); }
+  \end{lstlisting}
+  \item Producto cruz
+  \\
+  Normal mente el producto cruz entre 2 vectores nos da otro vector, pero a nosotros solo nos interesa la magnitud por sus
+  aplicaciones al plano 2d como el área del paralelogramo formado por 2 vectores la magnitud del producto cruz la podemos aya de la
+  siguiente manera
+  \begin{lstlisting}[style=C]
+  double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
+  \end{lstlisting}
+\end{itemize}

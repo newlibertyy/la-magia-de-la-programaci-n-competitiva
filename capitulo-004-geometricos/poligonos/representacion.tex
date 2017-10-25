@@ -1,0 +1,15 @@
+\subsection{Representación}
+Un  polígono es una región en un plano  limitado por 3 o mas segmentos de linea
+\\\imagen{minipageSize=0.5\linewidth,height=6cm,caption=poligono.png}{capitulo-004-geometricos/poligonos/imagenes/poligono.png}
+\\la forma de representar un polígono es con un arreglo de puntos de la siguiente forma:
+\begin{lstlisting}[style=C]
+vector<point> P;
+P.push_back(point(1, 4)); // A
+P.push_back(point(3, 5)); // B
+P.push_back(point(5, 6)); // C
+P.push_back(point(5, 4)); // D
+P.push_back(point(4, 1)); // E
+P.push_back(point(2, 2)); // F
+P.push_back(point(0, 2)); // G
+P.push_back(P[0]); // para cerrar el ciclo
+\end{lstlisting}

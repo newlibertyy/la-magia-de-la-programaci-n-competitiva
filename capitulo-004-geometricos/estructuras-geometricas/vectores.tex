@@ -40,7 +40,7 @@ return vec(cabeza.x - cola.x, cabez.y - cola.y); }
   aplicaciones al plano 2d como el área del paralelogramo formado por 2 vectores. la magnitud del producto cruz la podemos aya de la
   siguiente manera
   \begin{lstlisting}[style=C]
-  double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
+  double productoCruz(vec a, vec b) { return a.x * b.y - a.y * b.x; }
   \end{lstlisting}
 \end{itemize}
 \subsubsection{Aplicaciones de los vectores}
@@ -55,4 +55,10 @@ return vec(cabeza.x - cola.x, cabez.y - cola.y); }
   \\\imagen{minipageSize=0.5\linewidth,height=6cm,caption=dercha-izquierda-colineal.png}{capitulo-004-geometricos/estructuras-geometricas/imagenes/dercha-izquierda-colineal.png}
   \\
   Si el punto esta a la izquierda el seno del angulo sera positivo, si esta a la izquierda sera negativo y si es lineal sera 0.
+  \begin{lstlisting}[style=C]
+  bool ccw(point a, point b, point c) { //confirmar si esta en sentido antihorario
+  return productoCruz(vecAEstandar(a, b), vecAEstandar(a, c)) > 0; }
+  bool colineal(punto a, punto b, punto c) {
+  return fabs(productoCruz(vecAEstandar(a, b), vecAEstandar(a, c))) < EPS; }
+  \end{lstlisting}
 \end{itemize}

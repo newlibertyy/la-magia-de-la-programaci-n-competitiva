@@ -37,9 +37,22 @@ return vec(cabeza.x - cola.x, cabez.y - cola.y); }
   \item Producto cruz
   \\
   Normal mente el producto cruz entre 2 vectores nos da otro vector, pero a nosotros solo nos interesa la magnitud por sus
-  aplicaciones al plano 2d como el área del paralelogramo formado por 2 vectores la magnitud del producto cruz la podemos aya de la
+  aplicaciones al plano 2d como el área del paralelogramo formado por 2 vectores. la magnitud del producto cruz la podemos aya de la
   siguiente manera
   \begin{lstlisting}[style=C]
   double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
   \end{lstlisting}
+\end{itemize}
+\subsubsection{Aplicaciones de los vectores}
+\begin{itemize}
+  \item Área de un paralelogramo
+  \\
+  \\\imagen{minipageSize=0.5\linewidth,height=6cm,caption=paralelogramo.png}{capitulo-004-geometricos/estructuras-geometricas/imagenes/paralelogramo.png}
+  \\
+  $\left ( 2,5 \right )$ y $\left (4,1 \right )$
+  \item Saber si un punto esta a la derecha o la izquierda  de una recta o esta dentro de la recta
+  \\El producto punto se pude escribir también como $\sin \left ( \Theta  \right )\left | a \right |\left | b \right |$
+  \\\imagen{minipageSize=0.5\linewidth,height=6cm,caption=dercha-izquierda-colineal.png}{capitulo-004-geometricos/estructuras-geometricas/imagenes/dercha-izquierda-colineal.png}
+  \\
+  Si el punto esta a la izquierda el seno del angulo sera positivo, si esta a la izquierda sera negativo y si es lineal sera 0.
 \end{itemize}

@@ -1,0 +1,10 @@
+\subsection{Perímetro}
+El perímetro es la suma de los lados de un polígono es posible hallarlo solo recorriendo el arreglo que lo representa hallando
+la distancia euclídea entre el punto en el que estamos y el siguiente
+\begin{lstlisting}[style=C]
+double perimetro(const vector<punto> &P) {
+  double resultado = 0.0;
+  for (int i = 0; i < (int)P.size()-1; i++) result += dist(P[i], P[i+1]);
+  return resultado;
+}
+\end{lstlisting}

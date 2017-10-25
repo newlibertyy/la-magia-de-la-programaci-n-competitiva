@@ -1,0 +1,23 @@
+\subsection{Área}
+El área se calcula como el un medio determinante de la matriz creada por los puntos que componen el polígono.\\
+Para nuestro ejemplo tenemos:
+$A=\frac{1}{2}*\begin{vmatrix}
+ 1 & 4\\
+ 3 & 5\\
+ 5 & 6\\
+ 5 & 4\\
+ 4 & 1\\
+ 2 & 2\\
+ 0 & 2
+ \end{vmatrix}$
+ \\
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C]
+double area(const vector<punto> &P) {
+  double result = 0.0, x1, y1, x2, y2;
+  for (int i = 0; i < (int)P.size()-1; i++)
+  result += (P[i].x * P[i+1].y - P[i+1].x * P[i].y);
+}
+return fabs(result) / 2.0; }
+\end{lstlisting}
+\end{minipage}

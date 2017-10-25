@@ -1,5 +1,7 @@
 \subsection{Lineas}
-Una linea es un elemento matemático que tiene infinitos puntos, una sola dimensión y va en ambos sentidos, recomendamos usar
+Una linea es un elemento matemático que tiene infinitos puntos, una sola dimensión y va en ambos sentidos,
+\\\imagen{minipageSize=0.5\linewidth,height=6cm,caption=linea.png}{capitulo-004-geometricos/estructuras-geometricas/imagenes/linea.png}
+\\recomendamos usar
 la forma $ax+by+c=0$ y no $y=mx+b$ por que la primera tiene la capacidad de representar lineas verticales.
 \begin{lstlisting}[style=C]
 struct linea { double a, b, c; };
@@ -42,10 +44,8 @@ struct linea { double a, b, c; };
       if (sonParalelas(l1, l2))
           //Si son paralelas la lineas no se interceptan
           return false;
-
       //Resolvemos el sistema de ecuaciones con dos incognitas para hallar la x
       p.x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b);
-
       /* Es posible que una de nuestras rectas sea una recta vertical asi que no  podremos remplazar en ella nuestra x para hallar la y */
       if (fabs(l1.b) > EPS)
           p.y = -(l1.a * p.x + l1.c);

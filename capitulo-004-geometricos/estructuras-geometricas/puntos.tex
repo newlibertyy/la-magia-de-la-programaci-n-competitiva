@@ -47,7 +47,7 @@ Estas son algunas de las formas de implementar en 2d un punto.
 	 punto() { x = y = 0.0; }
 	 punto(double _x, double _y) : x(_x), y(_y) {}
 	 bool operator < (punto otro) const {
-	 if (fabs(x - otro.x) > EPS) return x < otro.x
+	 if (fabs(x - otro.x) > EPS) return x < otro.x;
 	 return y < otro.y; } };
 	 sort(P.begin(), P.end()); //ordenar existiendo el vector P
 	 \end{lstlisting}

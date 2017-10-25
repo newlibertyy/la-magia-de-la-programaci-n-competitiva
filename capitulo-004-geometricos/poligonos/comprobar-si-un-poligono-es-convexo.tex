@@ -3,12 +3,12 @@ Para comprobar si un polígono es convexo solo tenemos que comprobar si cogiendo
 que le sigue en sentido horario siempre esta a la derecha o siempre esta a la izquierda.
 \begin{lstlisting}[style=C]
 bool esConvexo(const vector<punto> &P) {
-int tamaño = (int)P.size();
-if (tamaño <= 3) return false; //los puntos o lineas no son convexos
+int tamano = (int)P.size();
+if (tamano <= 3) return false; //los puntos o lineas no son convexos
 bool primero = ccw(P[0], P[1], P[2]);
-for (int i = 1; i < tamaño - 1; i++)
-if (ccw(P[i], P[i+1], P[(i+2) == tamaño ? 1 : i+2]) != primero)
+for (int i = 1; i < tamano - 1; i++)
+if (ccw(P[i], P[i+1], P[(i+2) == tamano ? 1 : i+2]) != primero)
 return false;
 return true; }
 \end{lstlisting}
-\\este código no funciona si el polígono tiene puntos colineales 
+este código no funciona si el polígono tiene puntos colineales.

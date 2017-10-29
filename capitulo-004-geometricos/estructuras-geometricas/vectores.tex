@@ -61,4 +61,15 @@ return vec(cabeza.x - cola.x, cabez.y - cola.y); }
   bool colineal(punto a, punto b, punto c) {
   return fabs(productoCruz(vecAEstandar(a, b), vecAEstandar(a, c))) < EPS; }
   \end{lstlisting}
+  \item Hallar el angulo entre 2 vectores
+  \\
+  como el producto punto entre 2 vectores se puede expresar como
+  $\cos \left (\Theta  \right ) \left | a \right | \left | b \right |=a\times b$ solo tendremos que despejar $\Theta$ de ahí
+  $\Theta =\arccos \left (\frac{a\times b}{\left | a \right |\left | b \right |}  \right )$
+  \begin{lstlisting}[style=C]
+  double angulo(punto a, punto o, punto b) {
+    vec oa = vecAEstandar(o, a), ob = vecAEstandar(o, b);
+    return acos(ProductoPunto(oa, ob) / sqrt(cuadradoMagnitud(oa) * cuadradoMagnitud(ob)));
+  }
+  \end{lstlisting}
 \end{itemize}

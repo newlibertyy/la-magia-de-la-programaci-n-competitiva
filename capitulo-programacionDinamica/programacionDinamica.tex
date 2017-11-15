@@ -1,0 +1,168 @@
+\chapter{Programación Dinámica}
+\section{Descripción y Motivación}
+
+La programación dinámica (resumido como dp) es quizás uno de los temas más complejos de tratar, por que más que teoría es casi un paradigma de programación.
+\\Pero ¿qué es la programación dinámica?, la principal caracteristica de la programación dinámica es que se puede solucionar hallando la solucion de subproblemas, en general soluciona problemas de tipo optimización, maximización, minimización o conteo.
+
+
+\section{Memorización}
+La primera técnica que estudiaremos es la memorización, esta es muy util en algoritmos recursivos ya que evita que recalculemos desde una simple operacion hasta una rama completa de iteraciones. Esto se entiende mejor con un ejemplo, recordemos el algoritmo recursivo de fibbonacci.
+
+\imagen{minipageSize=1\linewidth,height=6cm,caption=fibonacci.png}{capitulo-programacionDinamica/imagenes/fibonacci.png}
+
+Si observamos los nodos coloreados, vemos que recalculamos mucho en especial toda la recursion de f(3) pintada en rojo, mientras más crecemos en el f(n), más grandes son los subarboles recursivos que recalculamos, es por eso que si memorizamos las soluciones solo hariamos los siguientes calculos:
+
+\imagen{minipageSize=1\linewidth,height=6cm,caption=fibonacciMemorizacion.png}{capitulo-programacionDinamica/imagenes/fibonacciMemorizacion.png}
+
+Solo calculamos los nodos pintados en verdes, los resultados de los nodos rojos los obtenemos por medio de la memorización, en este ejemplo nos ahorramos más de la mitad de iteraciones. Esto se lograria con un código como el siguiente:
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=fibonacciMemorizacion.cpp]
+int memorizacion[100];
+int fibonacci(int n){
+    if(n==0)return 0;
+    if(n==1)return 1;
+    if(memorizacion[n]==0){
+        memorizacion[n] = fibonacci(n-1) + fibonacci(n-2);
+    }
+    return memorizacion[n];
+}
+\end{lstlisting}
+\end{minipage}
+
+Este código es una pequeña modificacion al fibbonacciRecursivo.cpp del capitulo de recursividad, lo único que hacemos es agregarle un arreglo en el cual memorizamos las soluciones que vamos resolviendo, es importante que la recursión tenga acceso a este arreglo, puede hacerse creando el arreglo como variable global o mandandolo como parametro, en este caso y con fines de maratones de programación se usa como variable global ya que es más facil de codificar para estas competencias, pero en proyectos siempre recomendamos seguir las buenas practicas de programación.
+\\Otro ejemplo en el que el uso de la memorización nos puede ayudar es en hallar los coeficientes binomiales por medio de su formula recursiva (ver capitulo matematico)
+\\${n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}$ para todos los números enteros $n,k > 0$,
+\\con valores iniciales
+\\${n \choose 0}=1$ para todos los números enteros $n>=0$,
+\\${0 \choose k}=0$ para todos los números enteros $k>0$.
+\\Por ejemplo ${3 \choose 2}$ funciona asi:
+\\\imagen{minipageSize=1\linewidth,height=6cm,caption=combinatoria.png}{capitulo-programacionDinamica/imagenes/combinatoria.png}
+
+Podemos observar que con memorización nos ahorramos algunas repeticiones, pero si examinamos con detenimiento el crecimiento de la recursión y de la memorización, podemos observar lo siguiente:
+El crecimiento de la recursión es casi exponencial, ya que casi cada nodo se divide en 2, generando una complejidad un poco menor que $O(2^n)$, sin embargo el crecimiento de la memorización es de $n^2$ ya que si tenemos ${n \choose m}$ necesitariamos poder almacenar unicamente las combinaciónes desde $0$ hasta $n$ contra las combinaciones desde $0$ hasta $m$.
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=coeficientesBinomiales.cpp]
+int memorizacion[100][100];
+int coeficienteBinomial(int n,int k){
+    //casos base
+    if(n>=0 && k==0)return 1;
+    if(k>0 && n==0)return 0;
+    if(memorizacion[n][k]==0){
+        memorizacion[n][k] = coeficienteBinomial(n-1,k-1)+coeficienteBinomial(n-1,k);
+    }
+    return memorizacion[n][k];
+}
+\end{lstlisting}
+\end{minipage}
+
+Hay varias cosas ha tener en cuenta cuando se use esta técnica, la primera son los limites del arreglo de memorización, en este caso creamos un arreglo de $100*100$, lo cual nos condiciona a no poder calcular un $n$ o un $k$ superior a 100, la decisión entre usar memorización y no usarla, dependera del poder de computo y almacenamiento que se desea ocupar en el algoritmo. También se debe tener en cuenta los estados posibles de la solución, en los dos ejemplos preguntamos si una casilla en el arreglo es igual a 0 para guardar una nueva solución,$memorizacion[n] == 0$ y $memorizacion[n][k] == 0$, pero hay recursiones en las que valores positivos, negativos, cero y hasta objetos sean resultados válidos, en estos casos se puede utilizar un arreglo booleano extra que indique si esta solución ya ha sido calculada antes.
+\section{Problemas clásicos}
+\subsection{Problema de la mochila}
+Dado un conjunto de objetos,con su valor y peso. Determine el valor máximo que puedes cargar en una mochila que soporta $w$ peso máximo.
+Este problema ha sido muy importante en las ciencias de la computación, por ser un problema NP-Completo. Si deseas ahondar más en el tema, puedes encontrar mucha más información, al momento de escribir el capitulo recomendaria mucho más la información en ingles, buscando como ``knapsack problem''. Existen variantes al problema, utilizaremos la más común que es ``problema de la mochila 0-1'', consiste en que solo se puede llevar una copia de cada objeto.
+Para solucionar el problema, lo primero que se nos podria ocurrir es evaluar todas las posibilidades, esto nos dara la respuesta optima, pero solo podremos usarla en casos muy pequeños ya que su complejidad es de $O(2^n)$. Otra solución rápida seria ordenar los objetos de menor a mayor tamaño o de mayor a menor valor, y empezar a introducirlos hasta que no quepan más,  pero esta solución no nos dara el valor máximo posible.
+\\Existe una solución ``lineal'' para el problema de la mochila, más adelante explicare por que pongo entre comillas lineal. Como la solución de problemas de programación dinámica requiere solucionar subproblemas, muchas veces podemos plantarnos la idea de que pasaria si tuvieramos la respuesta a un subproblema para hallar la solución de este y asi mismo la solución del subproblema es la solución del subproblema del subproblema, frenemos antes de que explote nuestro cerebro y vamos a solucionar el problema de la mochila, podemos suponer que nos falta únicamente decidir si introducir o no un objeto, y que conocemos el valor máximo a cualquier capacidad $<=w$ de mochila. Por ejemplo tenemos una mochila que le caben 10 kilogramos, ya hemos calculado su valor máximo hasta el momento. Pero nos dimos cuenta que nos falto analizar el objeto $o_i$ un oso de 3 kilogramos, ahora tenemos dos opciones para maximizar nuestro valor: dejarla tal cual como esta, o liberar 3 kilogramos y introducir el oso (liberar 3 kilogramos puede consistir en vaciar toda la mochila y llenar 7 kilogramos con otras cosas más optimas). Hacer este proceso nos garantiza la solución optima entre introducir o no el oso de 3 kilogramos, si profundizamos el subproblema seria maximizar el valor que le cabria a una mochila de 7 kilogramos con el objeto $o_{i-1}$.
+\\Dado $dp[i][j]$ el valor máximo con los elementos $[1,2,3...,i]$ en una mochila de capacidad $j$,$w[i]$ el peso del $o_i$ objeto y v[i] el valor del $o_i$ objeto la formula que resuelve este problema es:
+
+$dp[0][j] = 0$
+
+$dp[i][j]= max \left\{\begin{array}{lr} dp[i-1][j]\\dp[i-1][j-w[i]]+v[i] & \text{si } j>=w[i] \end{array}\right\}$
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=mochila.cpp]
+int dp[100][100];
+int w[100];
+int v[100];
+int mochila(int i,int j){
+    //casos base
+    if(i==0)return 0;
+    if(dp[i][j]==0){
+        dp[i][j] = mochila(i-1,j);
+        if(j>=w[i]){
+            dp[i][j] = max(mochila(i-1,j),mochila(i-1,j-w[i])+v[i]);
+        }
+    }
+    return dp[i][j];
+}
+\end{lstlisting}
+\end{minipage}
+
+En este ejemplo usamos una entrada maxima de 100 objetos, y un tamaño maximo de la mochila de 100. Ahora la complejidad de este algoritmo es de $O(n*W)$ siendo $n$ la cantidad de objetos y $W$ el peso máximo de la mochila, como nota curiosa puse ``lineal'' entre comillas por que $W$ no esta condicionado por la entrada que son los $n$ objetos,por lo cual el problema sigue considerandose NP-Completo,haciendo de esta solucion inaceptable por ejemplo para ejercicios de pocos objetos con un tamaño descomunal.
+\\Al momento de escribir este cápitulo, se podia encontrar esta estupenda calculadora del problema de mochila en este link \url{http://karaffeltut.com/NEWKaraffeltutCom/Knapsack/knapsack.html}. En caso de que ya no exista, pueden buscar ``knapsack problem calculator'' y de seguro encontraran una similar.
+\subsection{Problema de subsecuencia común más larga}
+El problema de subsecuencia común más larga (llamado Longest Common Subsequence o LCS en ingles) consiste en encontrar la subsecuencia más larga en común entre dos secuencias.En este subcapitulo analizaremos todas las secuencias como Strings, pero una secuencia puede consistir en un arreglo de números, incluso hasta de objetos.E studiaremos una pequeña variante más sencilla que es hallar cuantos elementos tiene la subsecuencia común más larga, pero la solucion a hallar cual es la subsecuencia común más larga es muy similar. Una subsecuencia consiste en tomar $n$ elementos de la secuencia en el mismo orden, estos $n$ elementos pueden ser desde ninguno hasta todos, dos subsecuencias son comunes cuando contienen exactamente los mismos elementos en el mismo orden, y la subsecuencia común más larga es aquella que ninguna otra combinacion de las posibles subsecuencias entre las dos secuencias contenga mayor cantidad de elementos. Por ejemplo si tomamos las secuencias $a = [A,B,C,D,G,H]$ y $b=[A,E,D,F,H,R]$ la subsecuencia común mas larga es $[A,D,H]$
+\\\imagen{minipageSize=1\linewidth,height=6cm,caption=ejemploLCS.png}{capitulo-programacionDinamica/imagenes/ejemploLCS.png}
+\\Podriamos considerar que una solución seria ir recorriendo la primera secuencia vs la segunda, y cuando coincidan los elementos agregarlo al LCS, pero esto no siempre dara la respuesta correcta como en este caso $a2=[A,B,C,D]$ $b2=[A,C,D,B]$ ya que si lo hacemos recorriendolos unicamente obtendriamos $[A,B]$. Otra solución que si daria el resultado correcto seria probar todas las combinaciones entre subsecuencias, pero esto tendria una complejidad de $O(2^{n+m})$ siendo $n$ la cantidad de elementos de la primera secuencia y $m$ los elementos de la segunda.
+\\Una mejor solución aplicando dp consiste en lo siguiente: supongamos que conocemos la $LCS(i,j)$ de cualquier par de secuencias excepto la de $LCS(0,0)$, Siendo $LCS(i,j)$ la subsecuencia común más larga entre una secuencia $a$ y una secuencia $b$, haciendo un corte a las secuencias $a$,$b$ en los indices $i$,$j$ respectivamente quedando $LCS(i,j) = LCS(a[i:n],b[j:m])$ siendo $n$ el último elemento de la secuencia $a$ y $m$ el último elemento de la secuencia $b$. Por ejemplo $LCS(1,1)=[D,H]$ o $LCS(4,1)=[H]$ o $LCS(1,0)=[C,D]$ o $LCS(0,1)=[C,D]$.
+\\\imagen{minipageSize=1\linewidth,height=6cm,caption=ejemplosMultiplesLCS.png}{capitulo-programacionDinamica/imagenes/ejemplosMultiplesLCS.png}
+\\Conociendo esto intentaremos solucionear $LCS(0,0)$ tendremos tres opciones:
+\begin{itemize}
+\item este caso solo es posible si $a_0 = b_0$ para este caso lo unico que debemos hacer es agregar el elemento al LCS y luego evaluar $LCS(1,1)$
+\item descartamos completamente agregar $b_0$ para esto lo unico que debemos hacer es evaluar $LCS(0,1)$
+\item descartamos completamente agregar $a_0$ para esto lo unico que debemos hacer es evaluar $LCS(1,0$
+\end{itemize}
+Un ejemplo más enfocado para la segunda y tercera opción es este: $a3=[A,B,C]$ $b3=[B,C]$ como $a3_0 \neq b3_0$ debemos evaluar $LCS(0,1)$ vs $LCS(1,0)$
+\\\imagen{minipageSize=1\linewidth,height=3cm,caption=ejemplosMultiples2LCS.png}{capitulo-programacionDinamica/imagenes/ejemplosMultiples2LCS.png}
+\\Si conocemos $LCS(0,1)$ , $LCS(1,0)$ y $LCS(1,1) + 1$ alguno de los tres debe ser la respuesta a $LCS(0,0)$ ya que las subsecuencias deben ser consecutivas, por eso al probar las 3 opciones realmente estamos probando todas las combinaciones posibles. Ahora que sabemos esto podemos imaginar que se cumple para cualquier $LCS(i,j)$ con algunas pequeñas modificaciones quedando asi:
+\\$LCS(i,m+1) = 0$ siendo $m$ el último elemento de $b$
+\\$LCS(n+1,j) = 0$ siendo $n$ el último elemento de $a$
+\\$LCS(i,j)= max \left\{\begin{array}{lr} LCS(i+1,j)\\LCS(i,j+1)\\1+LCS(i+1,j+1) & \text{si } a_i=b_j \end{array}\right\}$
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=LCS.cpp]
+int memorizacion[100][100];
+int lcs(int i,int j){
+    int m = b.size()-1;
+    int n = a.size()-1;
+    if(j==m+1)return 0;
+    if(i==n+1)return 0;
+    if(memorizacion[i][j]!=0)return memorizacion[i][j];
+    int maximo = max(lcs(i+1,j),lcs(i,j+1));
+    if(a[i]==b[j]){
+        maximo = max(maximo,1+lcs(i+1,j+1));
+    }
+    memorizacion[i][j] = maximo;
+    return memorizacion[i][j];
+}
+\end{lstlisting}
+\end{minipage}
+Aqui tambien usamos la técnica de memorización, y de hecho en casi todos los dps para no recalcular al solucionar subproblemas, ya que si no la usamos nuestro crecimiento puede llegar a ser exponencial perdiendo todo el sentido al esfuerzo realizado en la solución. En esta implementación consideramos el indice $0$ como el primer elemento de la secuencia, algunas implementaciones más sencillas lo consideran el último elemento, ya depende de las preferencias del codificador.
+\\Al momento de escribir este cápitulo, se podia encontrar esta calculadora del problema de subsecuencia común más larga en este link \url{http://lcs-demo.sourceforge.net/}, aun que en ella muestran el algoritmo iterativo y no recursivo, pero eso ya lo discutimos en el capitulo de recursividad, todos los algoritmos recursivos pueden ser escritos iterativamente. En caso de que ya no exista, pueden buscar ``Longest common subsecuence calculator'' y de seguro encontraran una similar.
+\subsection{Problema de la subsecuencia creciente más larga}
+Este problema también es llamado llamado (Longest Increasing Subsequence o LIS en ingles)
+Ya explicamos que es una subsecuencia en el problema de subsecuencia común más larga, este problema es similar, pero en vez de dos secuencias solo tenemos una y lo que debemos hallar es una subsecuencia en la cual todos sus elementos van de menor a mayor, usaremos la variante de calcular únicamente cuantos elementos posee la subsecuencia creciente más larga, ya que esta variante es más facil, pero para saber cuales son estos elementos se hace de la misma manera con unos pasos adicionales. Formalmente dado una secuencia $a$ hallar una subsecuencia $b$ tal que $b_i<b_j$ y $i<j$ $\forall i,j \in a$. Por ejemplo si tenemos la secuencia $[-7, 10, 9, 2, 3, 8, 8, 1, 2, 3, 4]$ la subsecuencia creciente más larga seria $[-7,1,2,3,4]$.
+Al igual que el problema de subsecuencia común más larga, si intentamos resolver este problema por medio de todas las subsecuencias posibles tendriamos una complejidad de $O(2^n)$, una solución más óptima consiste en crear una copia de la secuencia $a$, ordenarla y aplicar subsecuencia común más larga sobre $a$ y $a_{ordenada}$, esto nos da una complejidad cercana a $2*n^2$, otra solución un poco más optima se consigue aplicando dp directamente sobre $a$ sin necesidad de crear una copia.
+\\\imagen{minipageSize=1\linewidth,height=7cm,caption=ejemploLIS.png}{capitulo-programacionDinamica/imagenes/ejemploLIS.png}
+\\Si consideramos $LIS(i)$ como la solución de la secuencia desde el indice $0$ hasta $i$, usando el elemento $i$ aun que esta no sea la secuencia más larga como vemos en el ejemplo con $i=7$. $LIS(i)=LIS(a[0:i])$, teniendo esto podemos calcular $LIS(i+1)$ de la siguiente forma:
+\\$LIS(0) = 1$, si únicamente tenemos un elemento ese sera la subsecuencia creciente más larga.
+\\$LIS(i+1) = max(LIS(j)+1), \forall j \in [0..i]$ si $a[j]<a[i+1]$
+\\$LIS(i+1) = 1, \forall j \in [0..i]$ si $a[j]>a[i+1]$
+Esto quiere decir que si queremos incluir el elemento $a[i]$ en la solución, este debe ser el mayor de la subsecuencia ya que va al final. Hagamos paso a paso $LIS(4)$:
+\\como $a[0] < a[4] -> LIS(4)_0 = LIS(1) + a[4] = [-7,3]$
+\\como $a[1] > a[4] -> LIS(4)_1 = a[4] = [3]$
+\\como $a[2] > a[4] -> LIS(4)_2 = a[4] = [3]$
+\\como $a[3] < a[4] -> LIS(4)_3 = LIS(3) + a[4] = [-7,2,3]$
+\\Ahora solo elegimos de todas las opciones la más larga, en este caso $LIS(4)_3$, del mismo modo podemos calcular $LIS(i+2)$,$LIS(i+3)$...
+\\\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=C,caption=LIS.cpp]
+int memorizacion[100];
+int LIS(int i){
+    if(i==0)return 1;
+    if(memorizacion[i]!=0)return memorizacion[i];
+    int maximo = 1;
+    for(int j=0;j<i;j++){
+        if(a[j]<a[i]){
+            maximo = max(maximo,LIS(j)+1);
+        }
+    }
+    memorizacion[i] = maximo;
+    return memorizacion[i];
+}
+\end{lstlisting}
+\end{minipage}
+Para efectos de la demostración describi la formula recursiva con $i+1$, pero en el codigo en realidad la use de la siguiente manera:
+\\$LIS(0) = 1$, si únicamente tenemos un elemento ese sera la subsecuencia creciente más larga.
+\\$LIS(i) = max(LIS(j)+1), \forall j \in [0..i-1]$ si $a[j]<a[i+1]$
+\\$LIS(i) = 1, \forall j \in [0..i-1]$ si $a[j]>a[i+1]$
+esta implementación tiene una complejidad de $O(n^2)$, existe una solución a este problema de complejidad $O(n*log(k))$ siendo $k$ la cantidad de elementos de $a$, que es una mejora de esta, la diferencia consiste en que no se recorre de $0...j$ si no que se mantiene un arreglo ordenado con las soluciones de $LIS(0),LIS(1)...LIS(j)$ mientras se calculan, y a la hora de revizarlos, se hace una busqueda binaria buscando el último elemento $e$ en el arreglo $l$ tal que $l[e] < a[j]$. En el repositorio de luisfcofv se pueden encontrar los códigos del libro Competitive Programming, dentro se encuentra la solución optimizada y que reconstruye todo el LIS, en esta url \url{https://github.com/luisfcofv/competitive-programming-book/blob/master/ch3/ch3_06_LIS.cpp/}.
